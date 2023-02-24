@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+// Import themes
+import darkTheme from "Theme/darkTheme";
+import defaultTheme from "Theme/defaultTheme";
+import lightTheme from "Theme/lightTheme";
+
+// Import Local Storage
+import useLocalStorage from "Hooks/useLocalStorage";
+
+// Import theme provider from styled components
+import { ThemeProvider } from "styled-components";
+
+// Import Pages
+import HomePage from "Pages/HomePage/HomePage";
 
 function App() {
+  // State to store the current theme of the website
+  const [theme, setTheme] = useLocalStorage(
+    "theme",
+    JSON.stringify({
+      ...defaultTheme,
+      ...lightTheme,
+    })
+  );
+  /**
+   * Function to toggle the theme of the website
+   * It will change the theme from light to dark and vice versa
+   */
+  const handleToggleTheme = () => {
+    if (JSON.parse(theme).id === "dark") {
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...lightTheme,
+        })
+      );
+    } else {
+      setTheme(
+        JSON.stringify({
+          ...defaultTheme,
+          ...darkTheme,
+        })
+      );
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={JSON.parse(theme)}>
+      <HomePage handleToggleTheme={handleToggleTheme} />
+    </ThemeProvider>
   );
 }
 
