@@ -13,6 +13,7 @@ const lightTheme = {
     // The color of the text on the website
     primary: "#475569",
     hover: "#e31d48",
+    muted: "#7c7c7c",
   },
   // The colors of the backgrounds in the website
   background: {

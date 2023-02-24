@@ -32,10 +32,14 @@ export const Container = styled.div`
 `;
 
 export const AppHeader = styled.header`
-  background-color: ${({ theme }) => theme.canvas};
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+`;
+
+export const CenterContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: row;
 `;

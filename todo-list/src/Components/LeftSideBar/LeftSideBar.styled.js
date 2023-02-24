@@ -1,20 +1,29 @@
+// Imports
 import styled from "styled-components";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
 
+// styles of offcanvas container
 export const OffcanvasContainer = styled(Offcanvas)`
+  position: fixed;
   width: 250px !important;
   flex-direction: column;
   background-color: ${({ theme }) => theme.background.primary} !important;
 
+  // styles of offcanvas body
   .offcanvas-body {
+    //  styles of items inside offcanvas body
     .dropdown-item {
       color: ${({ theme }) => theme.color.primary} !important;
+      margin: 10px 0;
+      :hover {
+        color: ${({ theme }) => theme.color.hover} !important;
+      }
     }
   }
 `;
 
+// styles of header
 export const Header = styled(Offcanvas.Header)`
   flex-direction: column;
 
@@ -28,7 +37,7 @@ export const Header = styled(Offcanvas.Header)`
   }
 `;
 
-// styles of button
+// styles of add new tasks button
 export const TaskBtn = styled(Button)`
   margin: 20px;
   background-color: ${({ theme }) => theme.canvas} !important;
@@ -36,4 +45,5 @@ export const TaskBtn = styled(Button)`
   :hover {
     background-color: ${({ theme }) => theme.background.hover} !important;
   }
+  border: none;
 `;

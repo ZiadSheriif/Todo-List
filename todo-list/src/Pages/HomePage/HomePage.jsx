@@ -1,16 +1,29 @@
+// Imports
 import React from "react";
-import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
 import Button from "react-bootstrap/Button";
 
-import { Container } from "./HomePage.styled";
+// Import styles
+import { Container, CenterContainer } from "./HomePage.styled";
+
+// Import Componens
+import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
+import Header from "Layouts/Header/Header";
+import CardTask from "Components/CardTask/CardTask";
+
 const HomePage = ({ handleToggleTheme }) => {
   return (
-    <Container>
-      <LeftSideBar />
-      <Button onClick={handleToggleTheme} variant="warning">
-        Warning
-      </Button>{" "}
-    </Container>
+    <>
+      <Container>
+        <LeftSideBar />
+        <CenterContainer>
+          <CardTask />
+          <Header />
+          <Button onClick={handleToggleTheme} variant="warning">
+            Warning
+          </Button>{" "}
+        </CenterContainer>
+      </Container>
+    </>
   );
 };
 

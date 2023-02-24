@@ -11,8 +11,9 @@ const darkTheme = {
   // The colors of the text on the website
   color: {
     // The color of the text on the website
-    primary: "#e2e8f0",
-    hover: "#f1f5f9",
+    primary: "#808080",
+    hover: "#f8f8ff",
+    muted: "#7c7c7c",
   },
   // The colors of the backgrounds in the website
   background: {
