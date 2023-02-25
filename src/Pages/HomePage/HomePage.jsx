@@ -1,5 +1,7 @@
 // Imports
 import React from "react";
+import { FiList } from "react-icons/fi";
+import { CiGrid41 } from "react-icons/ci";
 
 // Import styles
 import {
@@ -7,6 +9,9 @@ import {
   CenterContainer,
   ContainerTasks,
   Section,
+  CurrentItem,
+  ShapeView,
+  ChildView,
 } from "./HomePage.styled";
 
 // Import Components
@@ -29,6 +34,15 @@ const HomePage = ({ handleToggleTheme }) => {
       </Section>
       <CenterContainer>
         <Header />
+        <CurrentItem>All tasks (3 tasks)</CurrentItem>
+        <ShapeView>
+          <ChildView>
+            <FiList size={25} />
+          </ChildView>
+          <ChildView>
+            <CiGrid41 size={25} />
+          </ChildView>
+        </ShapeView>
         <ContainerTasks>
           <CardTask />
           <CardTask />

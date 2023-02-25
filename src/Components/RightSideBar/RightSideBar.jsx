@@ -10,12 +10,14 @@ import userIcon from "Assets/user.jfif";
 import {
   OffcanvasContainer,
   Header,
-  TaskBtn,
+  ProfileBtn,
   IcoContainer,
   Footer,
   DeleteBtn,
   FormSwitcher,
   ButtonContainer,
+  ProgressContainer,
+  ProgressBarContainer,
 } from "./RightSideBar.styled";
 
 /**
@@ -37,11 +39,15 @@ const RightSideBar = ({ handleToggleTheme }) => {
           </IcoContainer>
         </Offcanvas.Title>
         <ButtonContainer onClick={handleToggleTheme}>
-          <span>Dark Mode</span>
+          <span>Darkmode</span>
           <FormSwitcher>
             <Form.Check type="switch" id="custom-switch" />
           </FormSwitcher>
         </ButtonContainer>{" "}
+        <ProgressContainer>
+          <span>All tasks</span>
+          <ProgressBarContainer now={60} label={`${70}%`} />
+        </ProgressContainer>
       </Header>
       <hr />
       <Offcanvas.Body>
@@ -49,11 +55,11 @@ const RightSideBar = ({ handleToggleTheme }) => {
       </Offcanvas.Body>
       <Footer>
         <DeleteBtn onClick={deleteAllTasks}>Delete all task</DeleteBtn>
-        <TaskBtn
+        <ProfileBtn
         //   onClick={() => navigate("https://github.com/ZiadSheriif/Todo-List")}
         >
           Projected by Ziad Sherif
-        </TaskBtn>{" "}
+        </ProfileBtn>{" "}
       </Footer>
     </OffcanvasContainer>
   );

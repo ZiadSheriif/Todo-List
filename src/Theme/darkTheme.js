@@ -20,6 +20,7 @@ const darkTheme = {
     // The primary color of the background on the website
     primary: "#0f172a",
     hover: "#6d28d1",
+    secondary: "#ff4500	",
   },
 };
 

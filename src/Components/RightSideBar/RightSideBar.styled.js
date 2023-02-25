@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 // styles of offcanvas container
 export const OffcanvasContainer = styled(Offcanvas)`
@@ -18,7 +19,7 @@ export const OffcanvasContainer = styled(Offcanvas)`
     //  styles of items inside offcanvas body
     .dropdown-item {
       color: ${({ theme }) => theme.color.primary} !important;
-      margin: 10px 0;
+      margin: 5px 0;
       :hover {
         color: ${({ theme }) => theme.color.hover} !important;
       }
@@ -43,15 +44,15 @@ export const Header = styled(Offcanvas.Header)`
   }
 `;
 
-// styles of add new tasks button
-export const TaskBtn = styled(Button)`
+// styles of profile  button
+export const ProfileBtn = styled(Button)`
   margin: 20px;
-  background-color: ${({ theme }) => theme.canvas} !important;
+  background-color: ${({ theme }) => theme.color.hover} !important;
   width: 80%;
   border: none;
-
+  color: ${({ theme }) => theme.color.primary};
   :hover {
-    background-color: ${({ theme }) => theme.background.hover} !important;
+    background-color: ${({ theme }) => theme.background.secondary} !important;
   }
 `;
 
@@ -99,5 +100,19 @@ export const ButtonContainer = styled(Button)`
   :focus-visible {
     background-color: ${({ theme }) => theme.background.primary};
     box-shadow: none;
+  }
+`;
+export const ProgressBarContainer = styled(ProgressBar)`
+  .progress-bar {
+    background-color: ${({ theme }) => theme.canvas} !important;
+  }
+`;
+export const ProgressContainer = styled.div`
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+  span {
+    display: block;
+    margin-bottom: 10px;
   }
 `;
