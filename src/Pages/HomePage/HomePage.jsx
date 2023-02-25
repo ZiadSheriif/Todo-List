@@ -3,27 +3,46 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 
 // Import styles
-import { Container, CenterContainer } from "./HomePage.styled";
+import {
+  Container,
+  CenterContainer,
+  ContainerTasks,
+  Section,
+} from "./HomePage.styled";
 
-// Import Componens
+// Import Components
 import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
+import RightSideBar from "Components/RightSideBar/RightSideBar";
 import Header from "Layouts/Header/Header";
 import CardTask from "Components/CardTask/CardTask";
 
+/**
+ * Home page that displays main content of website
+ *
+ * @param {function handleToggleTheme()} handleToggleTheme  function that toggles the theme
+ * @returns {React.Page}
+ */
 const HomePage = ({ handleToggleTheme }) => {
   return (
-    <>
-      <Container>
+    <Container>
+      <Section>
         <LeftSideBar />
-        <CenterContainer>
+      </Section>
+      <CenterContainer>
+        <Header />
+        <ContainerTasks>
           <CardTask />
-          <Header />
-          <Button onClick={handleToggleTheme} variant="warning">
-            Warning
-          </Button>{" "}
-        </CenterContainer>
-      </Container>
-    </>
+          <CardTask />
+          <CardTask />
+          <CardTask />
+          <CardTask />
+          <CardTask />
+        </ContainerTasks>
+      </CenterContainer>
+      <Section>
+        <RightSideBar handleToggleTheme={handleToggleTheme} />
+      </Section>
+    </Container>
   );
 };
 

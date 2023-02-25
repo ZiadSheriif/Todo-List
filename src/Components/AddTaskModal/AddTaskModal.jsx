@@ -14,6 +14,14 @@ import {
   DropdownContainer,
 } from "./AddTaskModal.styled";
 
+/**
+ * Component that displays task modal which have title ,description ,date and status of task
+ *
+ * @param {boolean} showAddNewTask value that contains on or off modal task
+ * @param {function setShowAddNewTask()} setShowAddNewTask function that sets value of on or off of task modal
+ * @returns {React.Component}
+ */
+
 const AddTaskModal = ({ showAddNewTask, setShowAddNewTask }) => {
   // use states
   const [title, setTitle] = useState("");
@@ -23,6 +31,7 @@ const AddTaskModal = ({ showAddNewTask, setShowAddNewTask }) => {
   const [important, setImportant] = useState("");
   const [unimportant, setUnimportant] = useState("");
 
+  // functions that handle states
   const handleTitle = (event) => setTitle(event.target.value);
   const handleDate = (event) => setDate(event.target.value);
   const handleDescription = (event) => setDescription(event.target.value);

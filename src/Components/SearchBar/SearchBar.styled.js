@@ -6,7 +6,7 @@ export const InputSearchContainer = styled(Form)`
   margin: 20px;
   position: relative;
   display: inline-block;
-  width: 100%;
+  width: 50%;
 `;
 
 export const StyledSearchIcon = styled(CiSearch)`
