@@ -9,6 +9,9 @@ export const CardContainer = styled(Card)`
   .card-subtitle {
     color: #f0fff0;
   }
+  hr {
+    opacity: 0.2;
+  }
 `;
 
 export const Line = styled.div`
@@ -28,20 +31,35 @@ export const StatusBtn = styled.button`
   font-size: 14px;
   font-weight: 700;
   border: none;
-  background-color: red;
+  /* background-color: #a7f3d0; */
+  background-color: ${({ colorState }) =>
+    colorState === "uncompleted" ? "#fde68a" : "#a7f3d0"};
   letter-spacing: unset;
-  line-height: 17px;
-  min-height: 32px;
+  line-height: 15px;
+  min-height: 30px;
   min-width: 32px;
   padding: 10px;
-  margin-left: 16px;
   position: relative;
-  align-items: center;
   border-radius: 9999px;
   box-sizing: border-box;
   display: flex;
-  margin: 10px;
+  margin: 10px 0;
   justify-content: center;
-  text-align: center;
+  align-items: start;
   width: 40%;
+`;
+export const Footer = styled.footer`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+`;
+export const Settings = styled.div`
+  display: flex;
+  justify-content: space-around;
+  svg {
+    color: white;
+    cursor: pointer;
+  }
+  right: 0;
 `;

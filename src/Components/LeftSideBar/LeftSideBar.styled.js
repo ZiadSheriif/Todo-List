@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 
 // styles of offcanvas container
 export const OffcanvasContainer = styled(Offcanvas)`
+  z-index: 100;
   position: fixed;
   width: 250px !important;
   flex-direction: column;
@@ -42,8 +43,9 @@ export const TaskBtn = styled(Button)`
   margin: 20px;
   background-color: ${({ theme }) => theme.canvas} !important;
   width: 100%;
+  border: none;
+
   :hover {
     background-color: ${({ theme }) => theme.background.hover} !important;
   }
-  border: none;
 `;
