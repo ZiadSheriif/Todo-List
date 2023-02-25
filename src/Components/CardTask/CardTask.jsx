@@ -1,18 +1,12 @@
 // Imports
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiDotsVerticalRounded } from "react-icons/bi";
 
 //import styles
-import {
-  CardContainer,
-  Line,
-  StatusBtn,
-  Footer,
-  Settings,
-} from "./CardTask.styled";
+import { CardContainer, StatusBtn, Footer, Settings } from "./CardTask.styled";
 
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";

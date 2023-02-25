@@ -1,7 +1,6 @@
 // Imports
-import React, { useState } from "react";
+import React from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import userIcon from "Assets/user.jfif";
