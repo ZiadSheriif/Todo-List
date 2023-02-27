@@ -11,28 +11,49 @@ import { ConfirmBtn } from "./DeleteTaskModal.styled";
  * @param {boolean} deleteTask value that is on or off of confirmation modal
  * @returns {React.Component}
  */
-const DeleteTaskModal = ({ deleteTask, setDeleteTask }) => {
+const DeleteTaskModal = ({
+  deleteTask,
+  setDeleteTask,
+  singleTask,
+  titleTask,
+}) => {
   // handle delete tasks modal
   const closeDeleteTaskModal = () => {
     setDeleteTask(false);
   };
-
+  const handleTaskDelete = () => {
+    if (singleTask) {
+      const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+      const taskIndex = storedTasks.findIndex(
+        (task) => task.title === titleTask
+      );
+      console.log(taskIndex);
+      storedTasks.splice(taskIndex, 1);
+      localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    } else localStorage.clear();
+    closeDeleteTaskModal();
+  };
   return (
     <Modal
       show={deleteTask}
       onHide={closeDeleteTaskModal}
       backdrop="static"
-      keyboard={false}
+      keyboard={true}
     >
       <Modal.Header closeButton>
         <Modal.Title>Are you sure?</Modal.Title>
       </Modal.Header>
-      <Modal.Body>This task will be deleted permanently.</Modal.Body>
+      {singleTask && (
+        <Modal.Body>This task will be deleted permanently.</Modal.Body>
+      )}
+      {!singleTask && (
+        <Modal.Body>All data will be deleted permanently.</Modal.Body>
+      )}
       <Modal.Footer>
         <Button variant="transparent" onClick={closeDeleteTaskModal}>
           Cancel
         </Button>
-        <ConfirmBtn>Confirm</ConfirmBtn>
+        <ConfirmBtn onClick={handleTaskDelete}>Confirm</ConfirmBtn>
       </Modal.Footer>
     </Modal>
   );

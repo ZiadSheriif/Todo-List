@@ -11,7 +11,7 @@ import {
 
 // import components
 import SearchBar from "Components/SearchBar/SearchBar";
-import AddTaskModal from "Components/AddTaskModal/AddTaskModal";
+import AddTaskModal from "Components/TaskModal/TaskModal";
 import { MdNotifications } from "react-icons/md";
 
 let currentDate = new Date().toLocaleDateString();
@@ -40,6 +40,7 @@ const Header = () => {
       <AddTaskModal
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
+        taskMode={"Add"}
       />
     </Container>
   );

@@ -3,6 +3,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  overflow: auto;
 `;
 
 export const AppHeader = styled.header`
@@ -10,6 +11,7 @@ export const AppHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: auto;
 `;
 
 export const CenterContainer = styled.div`
@@ -17,11 +19,13 @@ export const CenterContainer = styled.div`
   display: inline;
   flex-direction: row;
   width: 60%;
+  overflow: auto;
 `;
 export const ContainerTasks = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+  overflow: auto;
 `;
 export const Section = styled.div`
   width: 20%;
@@ -41,6 +45,7 @@ export const ShapeView = styled.div`
   display: flex;
   left: 0;
   margin: 20px 0 40px 0;
+  overflow: auto;
 `;
 export const ChildView = styled.span`
   padding: 3px;
