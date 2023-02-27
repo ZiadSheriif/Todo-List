@@ -20,7 +20,8 @@ const lightTheme = {
     // The primary color of the background on the website
     primary: "#f1f5f9",
     hover: "#6d28c1",
-    secondary: "#ff4500	",
+    secondary: "#FC0404",
+    hoverBtnColor: "#B40404"
   },
   lineColor: {
     primary: "#fff",
