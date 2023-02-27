@@ -47,12 +47,13 @@ export const Header = styled(Offcanvas.Header)`
 // styles of profile  button
 export const ProfileBtn = styled(Button)`
   margin: 20px;
-  background-color: ${({ theme }) => theme.color.hover} !important;
+  background-color: ${({ theme }) => theme.background.secondary}!important;
   width: 80%;
   border: none;
   color: ${({ theme }) => theme.color.primary};
   :hover {
-    background-color: ${({ theme }) => theme.background.secondary} !important;
+    background-color: ${({ theme }) =>
+      theme.background.hoverBtnColor} !important;
   }
 `;
 
@@ -96,6 +97,7 @@ export const ButtonContainer = styled(Button)`
   span {
     color: ${({ theme }) => theme.color.primary};
   }
+
   :hover,
   :focus-visible {
     background-color: ${({ theme }) => theme.background.primary};

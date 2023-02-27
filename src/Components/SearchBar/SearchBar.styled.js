@@ -7,6 +7,14 @@ export const InputSearchContainer = styled(Form)`
   position: relative;
   display: inline-block;
   width: 50%;
+  .form-control {
+    :focus {
+      box-shadow: none !important;
+    }
+    :hover {
+      border-color: #c0c0fa;
+    }
+  }
 `;
 
 export const StyledSearchIcon = styled(CiSearch)`

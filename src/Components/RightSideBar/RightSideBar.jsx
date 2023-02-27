@@ -1,10 +1,13 @@
 // Imports
-import React from "react";
+import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
-import userIcon from "Assets/user.jfif";
+import userIcon from "Assets/images/user.jfif";
 // import { useNavigate } from "react-router-dom";
+
+// import components
+import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
 
 // import styles
 import {
@@ -25,12 +28,19 @@ import {
  * @returns {React.Component}
  */
 const RightSideBar = ({ handleToggleTheme }) => {
-  //   const navigate = useNavigate();
-
+  // const navigate = useNavigate();
+  const [deleteTask, setDeleteTask] = useState(false);
   // delete all task
-  const deleteAllTasks = () => {};
+  const handleDeleteAllTasks = () => {
+    setDeleteTask(true);
+  };
   return (
-    <OffcanvasContainer placement={"end"} show={true} backdrop={false}>
+    <OffcanvasContainer
+      placement={"end"}
+      show={true}
+      backdrop={false}
+      enforceFocus={false}
+    >
       <Header>
         <Offcanvas.Title>
           Hi, User{" "}
@@ -54,12 +64,18 @@ const RightSideBar = ({ handleToggleTheme }) => {
         <Dropdown.Item href="today-tasks">No tasks today </Dropdown.Item>
       </Offcanvas.Body>
       <Footer>
-        <DeleteBtn onClick={deleteAllTasks}>Delete all task</DeleteBtn>
+        <DeleteBtn onClick={handleDeleteAllTasks}>Delete all task</DeleteBtn>
         <ProfileBtn
-        //   onClick={() => navigate("https://github.com/ZiadSheriif/Todo-List")}
+        // onClick={() => navigate("https://github.com/ZiadSheriif/Todo-List")}
         >
           Projected by Ziad Sherif
         </ProfileBtn>{" "}
+        <DeleteTaskModal
+          deleteTask={deleteTask}
+          setDeleteTask={setDeleteTask}
+          singleTask={false}
+          titleTask={"-1"}
+        />
       </Footer>
     </OffcanvasContainer>
   );

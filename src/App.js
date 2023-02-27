@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -44,7 +44,9 @@ function App() {
       );
     }
   };
-
+  useEffect(() => {
+    document.title = "TO DO ";
+  }, []);
   return (
     <ThemeProvider theme={JSON.parse(theme)}>
       <HomePage handleToggleTheme={handleToggleTheme} />

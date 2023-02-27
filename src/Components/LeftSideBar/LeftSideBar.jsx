@@ -1,9 +1,11 @@
+// Imports
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Dropdown from "react-bootstrap/Dropdown";
 import { OffcanvasContainer, Header, TaskBtn } from "./LeftSideBar.styled";
 
-import AddTaskModal from "Components/AddTaskModal/AddTaskModal";
+// import components
+import TaskModal from "Components/TaskModal/TaskModal";
 
 /**
  * Component that displays side bar of which includes task progress
@@ -13,7 +15,7 @@ const LeftSideBar = () => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <>
-      <OffcanvasContainer show={true} backdrop={false}>
+      <OffcanvasContainer show={true} backdrop={false} enforceFocus={false}>
         <Header>
           <Offcanvas.Title>to-do list</Offcanvas.Title>
           <TaskBtn
@@ -34,9 +36,10 @@ const LeftSideBar = () => {
           </Dropdown.Item>
         </Offcanvas.Body>
       </OffcanvasContainer>
-      <AddTaskModal
+      <TaskModal
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
+        taskMode={"Add"}
       />
     </>
   );
