@@ -23,6 +23,11 @@ function App() {
       ...lightTheme,
     })
   );
+
+  const [checkedSwitch, setCheckedSwitch] = useLocalStorage(
+    "checkedSwitch",
+    JSON.stringify(false)
+  );
   /**
    * Function to toggle the theme of the website
    * It will change the theme from light to dark and vice versa
@@ -43,13 +48,21 @@ function App() {
         })
       );
     }
+
+    if (JSON.parse(checkedSwitch) === true)
+      setCheckedSwitch(JSON.stringify(false));
+    else setCheckedSwitch(JSON.stringify(true));
   };
   useEffect(() => {
     document.title = "TO DO ";
   }, []);
   return (
     <ThemeProvider theme={JSON.parse(theme)}>
-      <HomePage handleToggleTheme={handleToggleTheme} />
+      <HomePage
+        handleToggleTheme={handleToggleTheme}
+        checkedSwitch={checkedSwitch}
+        setCheckedSwitch={setCheckedSwitch}
+      />
     </ThemeProvider>
   );
 }

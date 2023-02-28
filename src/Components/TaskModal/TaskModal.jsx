@@ -58,10 +58,10 @@ const TaskModal = ({
   const [description, setDescription] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.description : ""
   );
-  const [directory, setDirectory] = useState("Main");
   const [important, setImportant] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.important : false
   );
+  const [directory, setDirectory] = useState("Main");
 
   // functions that handle states
   const handleTitle = (event) => setTitle(event.target.value);
@@ -105,6 +105,13 @@ const TaskModal = ({
       );
       // close modal window
       setShowAddNewTask(false);
+    }
+  };
+
+  // Submit editing task
+  const submitEditTask = () => {
+    if (title !== "" && title !== titleTask) {
+      setTitle(title);
     }
   };
 
@@ -165,6 +172,8 @@ const TaskModal = ({
               className="form-check-input w-5vm"
               type="checkbox"
               id="state-one"
+              onChange={(e) => setImportant(e.target.checked)}
+              checked={important}
             />
             <TaskStatus>Mark as important</TaskStatus>
           </ProgressCheck>
@@ -183,7 +192,7 @@ const TaskModal = ({
           <AddTaskBtn onClick={handleSubmitTask}>Add a task</AddTaskBtn>
         )}
         {taskMode === "Edit" && (
-          <AddTaskBtn onClick={handleSubmitTask}>Edit a task</AddTaskBtn>
+          <AddTaskBtn onClick={submitEditTask}>Edit a task</AddTaskBtn>
         )}
       </Footer>
     </ModalContainer>

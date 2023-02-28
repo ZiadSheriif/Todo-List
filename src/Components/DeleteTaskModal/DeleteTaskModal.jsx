@@ -22,16 +22,22 @@ const DeleteTaskModal = ({
   const closeDeleteTaskModal = () => {
     setDeleteTask(false);
   };
+
+  // handle deleting tasks
   const handleTaskDelete = () => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+
+    // delete a certain task
     if (singleTask) {
       const taskIndex = storedTasks.findIndex(
         (task) => task.title === titleTask
       );
-      storedTasks.splice(taskIndex, 1);
 
+      storedTasks.splice(taskIndex, 1);
       localStorage.setItem("tasks", JSON.stringify(storedTasks));
-    } else localStorage.setItem("tasks", JSON.stringify([]));
+    }
+    // delete all tasks
+    else localStorage.setItem("tasks", JSON.stringify([]));
     setTasks(storedTasks);
     closeDeleteTaskModal();
   };

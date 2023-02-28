@@ -27,13 +27,19 @@ import {
  * Component that displays side bar of which includes task progress
  * @returns {React.Component}
  */
-const RightSideBar = ({ handleToggleTheme,setTasks }) => {
+const RightSideBar = ({
+  handleToggleTheme,
+  setTasks,
+  setCheckedSwitch,
+  checkedSwitch,
+}) => {
   // const navigate = useNavigate();
   const [deleteTask, setDeleteTask] = useState(false);
   // delete all task
   const handleDeleteAllTasks = () => {
     setDeleteTask(true);
   };
+
   return (
     <OffcanvasContainer
       placement={"end"}
@@ -51,7 +57,11 @@ const RightSideBar = ({ handleToggleTheme,setTasks }) => {
         <ButtonContainer onClick={handleToggleTheme}>
           <span>Darkmode</span>
           <FormSwitcher>
-            <Form.Check type="switch" id="custom-switch" />
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              checked={JSON.parse(checkedSwitch)}
+            />
           </FormSwitcher>
         </ButtonContainer>{" "}
         <ProgressContainer>

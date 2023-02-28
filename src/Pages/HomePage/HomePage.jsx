@@ -26,7 +26,7 @@ import CardTask from "Components/CardTask/CardTask";
  * @param {function handleToggleTheme()} handleToggleTheme  function that toggles the theme
  * @returns {React.Page}
  */
-const HomePage = ({ handleToggleTheme }) => {
+const HomePage = ({ handleToggleTheme,setCheckedSwitch,checkedSwitch }) => {
   // const newTask = [
   //   {
   //     title: "Task 1",
@@ -71,9 +71,10 @@ const HomePage = ({ handleToggleTheme }) => {
         </ShapeView>
         <ContainerTasks>
           {storedTasks &&
-            storedTasks.map((task) => {
+            storedTasks.map((task, index) => {
               return (
                 <CardTask
+                  key={index}
                   title={task.title}
                   description={task.description}
                   date={task.date}
@@ -88,6 +89,8 @@ const HomePage = ({ handleToggleTheme }) => {
         <RightSideBar
           handleToggleTheme={handleToggleTheme}
           setTasks={setTasks}
+          setCheckedSwitch={setCheckedSwitch}
+          checkedSwitch={checkedSwitch}
         />
       </Section>
     </Container>
