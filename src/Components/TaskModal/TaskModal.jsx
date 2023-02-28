@@ -29,8 +29,10 @@ const TaskModal = ({
   setShowAddNewTask,
   taskMode,
   titleTask,
+  setTasks,
+  tasks,
 }) => {
-  // use states
+  // get all information of task
   const getTaskInfo = (title) => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     const task = storedTasks.find((task) => task.title === title);
@@ -46,7 +48,7 @@ const TaskModal = ({
   };
 
   // Use states
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.title : ""
   );
@@ -63,7 +65,9 @@ const TaskModal = ({
 
   // functions that handle states
   const handleTitle = (event) => setTitle(event.target.value);
-  const handleDate = (event) => setDate(event.target.value);
+  const handleDate = (event) => {
+    setDate(event);
+  };
   const handleDescription = (event) => setDescription(event.target.value);
   const handleDirectory = (event) => setDirectory(event.target.value);
 
@@ -74,7 +78,8 @@ const TaskModal = ({
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     const found = storedTasks.find((task) => task.title === title);
 
-    if (found === undefined) {
+    if (found === undefined && title !== "") {
+      // insert a new task in state to refresh automatically
       setTasks([
         ...tasks,
         {
@@ -84,7 +89,22 @@ const TaskModal = ({
           important: important,
         },
       ]);
-      localStorage.setItem("tasks", JSON.stringify(tasks));
+
+      // insert new task
+      localStorage.setItem(
+        "tasks",
+        JSON.stringify([
+          ...tasks,
+          {
+            title: title,
+            description: description,
+            date: date,
+            important: important,
+          },
+        ])
+      );
+      // close modal window
+      setShowAddNewTask(false);
     }
   };
 

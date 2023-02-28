@@ -11,7 +11,7 @@ import {
 
 // import components
 import SearchBar from "Components/SearchBar/SearchBar";
-import AddTaskModal from "Components/TaskModal/TaskModal";
+import TaskModal from "Components/TaskModal/TaskModal";
 import { MdNotifications } from "react-icons/md";
 
 let currentDate = new Date().toLocaleDateString();
@@ -20,7 +20,7 @@ let currentDate = new Date().toLocaleDateString();
  * Layout that displays header of page which contains search-bar ,date and new task button
  * @returns {React.Layout}
  */
-const Header = () => {
+const Header = ({setTasks,tasks}) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <Container>
@@ -37,10 +37,12 @@ const Header = () => {
           Add New Task
         </TaskBtn>{" "}
       </NotificationContainer>
-      <AddTaskModal
+      <TaskModal
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
         taskMode={"Add"}
+        setTasks={setTasks}
+        tasks={tasks}
       />
     </Container>
   );

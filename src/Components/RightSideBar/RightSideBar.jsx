@@ -27,7 +27,7 @@ import {
  * Component that displays side bar of which includes task progress
  * @returns {React.Component}
  */
-const RightSideBar = ({ handleToggleTheme }) => {
+const RightSideBar = ({ handleToggleTheme,setTasks }) => {
   // const navigate = useNavigate();
   const [deleteTask, setDeleteTask] = useState(false);
   // delete all task
@@ -75,6 +75,7 @@ const RightSideBar = ({ handleToggleTheme }) => {
           setDeleteTask={setDeleteTask}
           singleTask={false}
           titleTask={"-1"}
+          setTasks={setTasks}
         />
       </Footer>
     </OffcanvasContainer>

@@ -11,7 +11,7 @@ import TaskModal from "Components/TaskModal/TaskModal";
  * Component that displays side bar of which includes task progress
  * @returns {React.Component}
  */
-const LeftSideBar = () => {
+const LeftSideBar = ({ setTasks, tasks }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <>
@@ -40,6 +40,8 @@ const LeftSideBar = () => {
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
         taskMode={"Add"}
+        setTasks={setTasks}
+        tasks={tasks}
       />
     </>
   );

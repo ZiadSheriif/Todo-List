@@ -11,30 +11,26 @@ import { CardContainer, StatusBtn, Footer, Settings } from "./CardTask.styled";
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
 import TaskModal from "Components/TaskModal/TaskModal";
-import useLocalStorage from "Hooks/useLocalStorage";
-const newTask = [
-  {
-    title: "Task 1",
-    description: "This is a new task",
-    date: "2023-03-01",
-  },
-  {
-    title: "Task 2",
-    description: "This is a new task",
-    date: "2023-03-03",
-  },
-  {
-    title: "Task 3",
-    description: "This is a new task",
-    date: "2023-04-24",
-  },
-];
+
+/**
+ * function that handles  date format
+ * @param {string} dateString
+ * @returns formated date  string
+ */
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const formatedDate = day + "/" + month + "/" + year;
+  return formatedDate;
+};
 /**
  * Component that displays card task that contains the information of task
  *
  * @returns {React.Component}
  */
-const CardTask = ({ title, description, date, important }) => {
+const CardTask = ({ title, description, date, important, setTasks, tasks }) => {
   // Use states
   const [state, setState] = useState("completed");
   const [starTask, setStarTask] = useState(false);
@@ -58,7 +54,7 @@ const CardTask = ({ title, description, date, important }) => {
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Subtitle className="mb-2 text-dark">{description}</Card.Subtitle>
-        <Card.Text>{date}</Card.Text>
+        <Card.Text>{formatDate(date)}</Card.Text>
       </Card.Body>
       <hr />
       <Footer>
@@ -82,12 +78,15 @@ const CardTask = ({ title, description, date, important }) => {
         setDeleteTask={setDeleteTask}
         singleTask={true}
         titleTask={title}
+        setTasks={setTasks}
       />
       <TaskModal
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
         taskMode={"Edit"}
         titleTask={title}
+        tasks={tasks}
+        setTasks={setTasks}
       />
     </CardContainer>
   );

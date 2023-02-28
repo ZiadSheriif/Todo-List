@@ -27,16 +27,37 @@ import CardTask from "Components/CardTask/CardTask";
  * @returns {React.Page}
  */
 const HomePage = ({ handleToggleTheme }) => {
+  // const newTask = [
+  //   {
+  //     title: "Task 1",
+  //     description: "This is a new task",
+  //     date: "2023-03-01",
+  //   },
+  //   {
+  //     title: "Task 2",
+  //     description: "This is a new task",
+  //     date: "2023-03-03",
+  //   },
+  //   {
+  //     title: "Task 3",
+  //     description: "This is a new task",
+  //     date: "2023-04-24",
+  //   },
+  // ];
+  // localStorage.setItem("tasks", JSON.stringify(newTask));
+
   // Use Effects
-  let storedTasks = JSON.parse(localStorage.getItem("tasks"));
-  useEffect(() => {}, [storedTasks.length]);
+  const [tasks, setTasks] = useState([]);
+  const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+
+  useEffect(() => {}, [storedTasks]);
   return (
     <Container>
       <Section>
-        <LeftSideBar />
+        <LeftSideBar setTasks={setTasks} tasks={tasks} />
       </Section>
       <CenterContainer>
-        <Header />
+        <Header setTasks={setTasks} tasks={tasks} />
         <CurrentItem>
           All tasks ({storedTasks && storedTasks.length} tasks)
         </CurrentItem>
@@ -57,13 +78,17 @@ const HomePage = ({ handleToggleTheme }) => {
                   description={task.description}
                   date={task.date}
                   important={task.important}
+                  setTasks={setTasks}
                 />
               );
             })}
         </ContainerTasks>
       </CenterContainer>
       <Section>
-        <RightSideBar handleToggleTheme={handleToggleTheme} />
+        <RightSideBar
+          handleToggleTheme={handleToggleTheme}
+          setTasks={setTasks}
+        />
       </Section>
     </Container>
   );

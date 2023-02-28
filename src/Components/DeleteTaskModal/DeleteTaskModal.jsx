@@ -16,21 +16,23 @@ const DeleteTaskModal = ({
   setDeleteTask,
   singleTask,
   titleTask,
+  setTasks,
 }) => {
   // handle delete tasks modal
   const closeDeleteTaskModal = () => {
     setDeleteTask(false);
   };
   const handleTaskDelete = () => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (singleTask) {
-      const storedTasks = JSON.parse(localStorage.getItem("tasks"));
       const taskIndex = storedTasks.findIndex(
         (task) => task.title === titleTask
       );
-      console.log(taskIndex);
       storedTasks.splice(taskIndex, 1);
+
       localStorage.setItem("tasks", JSON.stringify(storedTasks));
-    } else localStorage.clear();
+    } else localStorage.setItem("tasks", JSON.stringify([]));
+    setTasks(storedTasks);
     closeDeleteTaskModal();
   };
   return (

@@ -11,12 +11,10 @@ const SearchBar = () => {
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
-    console.log(searchTerm);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(searchTerm); // replace with your desired search logic
   };
 
   const handleKeyPress = (event) => {
