@@ -32,6 +32,7 @@ function App() {
    * Function to toggle the theme of the website
    * It will change the theme from light to dark and vice versa
    */
+   
   const handleToggleTheme = () => {
     if (JSON.parse(theme).id === "dark") {
       setTheme(
