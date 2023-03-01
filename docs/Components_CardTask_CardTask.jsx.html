@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/CardTask/CardTask.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/CardTask/CardTask.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Imports
+import React, { useState } from "react";
+import Card from "react-bootstrap/Card";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { RiDeleteBinLine } from "react-icons/ri";
+import { BiDotsVerticalRounded } from "react-icons/bi";
+
+//import styles
+import { CardContainer, StatusBtn, Footer, Settings } from "./CardTask.styled";
+
+// import components
+import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
+import TaskModal from "Components/TaskModal/TaskModal";
+
+/**
+ * function that handles  date format
+ * @param {string} dateString
+ * @returns formated date  string
+ */
+const formatDate = (dateString) => {
+  const date = new Date(dateString);
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const formatedDate = day + "/" + month + "/" + year;
+  return formatedDate;
+};
+/**
+ * Component that displays card task that contains the information of task
+ *
+ * @returns {React.Component}
+ */
+const CardTask = ({ taskData, setTasks, tasks }) => {
+  //  state that handle task is completed or  not
+  const [state, setState] = useState(taskData.completed);
+  //  state that handle task is important or not
+  const [starTask, setStarTask] = useState(taskData.important);
+  const [deleteTask, setDeleteTask] = useState(false);
+  const [showAddNewTask, setShowAddNewTask] = useState(false);
+
+  // handle state change of task progress
+  const handleToggleState = () => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    const taskToEdit = storedTasks.find(
+      (task) => task.title === taskData.title
+    );
+
+    if (taskToEdit.completed === "completed") {
+      taskToEdit.completed = "uncompleted";
+    } else taskToEdit.completed = "completed";
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    setState(taskToEdit.completed);
+  };
+
+  // handle is favorite task or not
+  const handleFavoriteTasks = () => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    const taskToEdit = storedTasks.find(
+      (task) => task.title === taskData.title
+    );
+
+    if (taskToEdit.important) {
+      taskToEdit.important = false;
+    } else taskToEdit.important = true;
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    setStarTask(taskToEdit.important);
+  };
+
+  return (
+    &lt;CardContainer style={{ width: "18rem" }}>
+      &lt;Card.Body>
+        &lt;Card.Title>{taskData.title}&lt;/Card.Title>
+        &lt;Card.Subtitle className="mb-2 text-dark">
+          {taskData.description}
+        &lt;/Card.Subtitle>
+        &lt;Card.Text>{formatDate(taskData.date)}&lt;/Card.Text>
+      &lt;/Card.Body>
+      &lt;hr />
+      &lt;Footer>
+        &lt;StatusBtn colorState={state} onClick={handleToggleState}>
+          {state}
+        &lt;/StatusBtn>
+        &lt;Settings>
+          {!starTask &amp;&amp; (
+            &lt;AiOutlineStar onClick={handleFavoriteTasks} size={25} />
+          )}
+          {starTask &amp;&amp; &lt;AiFillStar onClick={handleFavoriteTasks} size={25} />}
+          &lt;RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
+          &lt;BiDotsVerticalRounded
+            onClick={() => setShowAddNewTask(true)}
+            size={25}
+          />
+        &lt;/Settings>
+      &lt;/Footer>
+      &lt;DeleteTaskModal
+        deleteTask={deleteTask}
+        setDeleteTask={setDeleteTask}
+        singleTask={true}
+        titleTask={taskData.title}
+        setTasks={setTasks}
+      />
+      &lt;TaskModal
+        showAddNewTask={showAddNewTask}
+        setShowAddNewTask={setShowAddNewTask}
+        taskMode={"Edit"}
+        titleTask={taskData.title}
+        tasks={tasks}
+        setTasks={setTasks}
+      />
+    &lt;/CardContainer>
+  );
+};
+
+export default CardTask;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

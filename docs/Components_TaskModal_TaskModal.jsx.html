@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Components/TaskModal/TaskModal.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Components/TaskModal/TaskModal.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// Imports
+import React, { useState, useEffect } from "react";
+import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
+import Dropdown from "react-bootstrap/Dropdown";
+import useLocalStorage from "Hooks/useLocalStorage";
+
+import {
+  ModalContainer,
+  Label,
+  Footer,
+  AddTaskBtn,
+  ProgressCheck,
+  TaskStatus,
+  DateStyled,
+  DropdownContainer,
+} from "./TaskModal.styled";
+
+const newTask = [
+  {
+    title: "Task 1",
+    description: "This is a new task",
+    date: "2023-03-01",
+    important: true,
+    completed: "uncompleted",
+  },
+  {
+    title: "Task 2",
+    description: "This is a new task",
+    date: "2023-03-03",
+    important: false,
+    completed: "uncompleted",
+  },
+  {
+    title: "Task 3",
+    description: "This is a new task",
+    date: "2023-04-24",
+    important: true,
+    completed: "completed",
+  },
+];
+
+// handle case if user delete it from browser
+const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+if (storedTasks === null) {
+  localStorage.setItem("tasks", JSON.stringify(newTask));
+}
+
+/**
+ * Component that displays task modal which have title ,description ,date and status of task
+ *
+ * @param {boolean} showAddNewTask value that contains on or off modal task
+ * @param {function setShowAddNewTask()} setShowAddNewTask function that sets value of on or off of task modal
+ * @returns {React.Component}
+ */
+
+const TaskModal = ({
+  showAddNewTask,
+  setShowAddNewTask,
+  taskMode,
+  titleTask,
+  setTasks,
+  tasks,
+}) => {
+  // get all information of task
+  const getTaskInfo = (title) => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    const task = storedTasks.find((task) => task.title === title);
+    if (task !== undefined) {
+      return {
+        title: task.title,
+        description: task.description,
+        date: task.date,
+        important: task.important,
+        completed: task.completed,
+      };
+    }
+    return null;
+  };
+
+  // Use states
+  // const [tasks, setTasks] = useState([]);
+  const [title, setTitle] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.title : ""
+  );
+  const [date, setDate] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.date : new Date()
+  );
+  const [description, setDescription] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.description : ""
+  );
+  const [important, setImportant] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.important : false
+  );
+  const [completed, setCompleted] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.completed : "uncompleted"
+  );
+  const [directory, setDirectory] = useState("Main");
+
+  // functions that handle states
+  const handleTitle = (event) => setTitle(event.target.value);
+  const handleDate = (event) => {
+    setDate(event);
+  };
+  const handleDescription = (event) => setDescription(event.target.value);
+  const handleDirectory = (event) => setDirectory(event.target.value);
+
+  // handle submition of add task
+  const handleSubmitTask = (event) => {
+    event.preventDefault();
+    const found = storedTasks.find((task) => task.title === title);
+
+    if (found === undefined &amp;&amp; title !== "") {
+      // insert a new task in state to refresh automatically
+      setTasks([
+        ...tasks,
+        {
+          title: title,
+          description: description,
+          date: date,
+          important: important,
+          completed: "completed",
+        },
+      ]);
+
+      // insert new task
+      localStorage.setItem(
+        "tasks",
+        JSON.stringify([
+          ...tasks,
+          {
+            title: title,
+            description: description,
+            date: date,
+            important: important,
+            completed: "completed",
+          },
+        ])
+      );
+      clearAllData();
+      // close modal window
+      setShowAddNewTask(false);
+    }
+  };
+
+  // Submit editing task
+  const submitEditTask = () => {};
+
+  // clear all data
+  const clearAllData = () => {
+    setTitle("");
+    setDescription("");
+    setImportant(false);
+    setCompleted("uncompleted");
+  };
+
+  // Use Effects
+  useEffect(() => {
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    if (storedTasks) setTasks(storedTasks);
+  }, []);
+
+  return (
+    &lt;ModalContainer
+      show={showAddNewTask}
+      onHide={() => setShowAddNewTask(false)}
+    >
+      &lt;Modal.Header closeButton>
+        {taskMode === "Add" &amp;&amp; &lt;Modal.Title>Add a task&lt;/Modal.Title>}
+        {taskMode === "Edit" &amp;&amp; &lt;Modal.Title>Edit a task&lt;/Modal.Title>}
+      &lt;/Modal.Header>
+      &lt;Modal.Body>
+        &lt;Form>
+          &lt;Form.Group className="mb-3">
+            &lt;Form.Label>Title&lt;/Form.Label>
+            &lt;Form.Control
+              placeholder="e.g: study for the test"
+              autoFocus
+              value={title}
+              onChange={handleTitle}
+              maxLength="100"
+              required
+            />
+          &lt;/Form.Group>
+          &lt;Form.Group className="mb-3">
+            &lt;Label>Date&lt;/Label>
+            &lt;DateStyled onChange={handleDate} value={date} />
+          &lt;/Form.Group>
+          &lt;Form.Group className="mb-3">
+            &lt;Label>Description (optional)&lt;/Label>
+            &lt;Form.Control
+              as="textarea"
+              rows={3}
+              placeholder="e.g: study for the test"
+              onChange={handleDescription}
+              maxLength="500"
+              value={description}
+            />
+          &lt;/Form.Group>
+        &lt;/Form>
+        &lt;DropdownContainer>
+          &lt;Form.Label>Select a directory&lt;/Form.Label>
+          &lt;Dropdown.Toggle id="dropdown-basic">Main&lt;/Dropdown.Toggle>
+          &lt;Dropdown.Menu>
+            &lt;Dropdown.Item href="#/action-1">Main&lt;/Dropdown.Item>
+          &lt;/Dropdown.Menu>
+        &lt;/DropdownContainer>
+        &lt;div>
+          &lt;ProgressCheck>
+            &lt;input
+              className="form-check-input w-5vm"
+              type="checkbox"
+              id="state-one"
+              onChange={(e) => setImportant(e.target.checked)}
+              checked={important}
+              defaultChecked={false}
+            />
+            &lt;TaskStatus>Mark as important&lt;/TaskStatus>
+          &lt;/ProgressCheck>
+          &lt;ProgressCheck>
+            &lt;input
+              className="form-check-input w-5vm"
+              type="checkbox"
+              id="state-two"
+              onChange={(e) => setCompleted(e.target.checked)}
+              checked={completed}
+              defaultChecked={false}
+            />
+            &lt;TaskStatus>Mark as completed&lt;/TaskStatus>
+          &lt;/ProgressCheck>
+        &lt;/div>
+      &lt;/Modal.Body>
+      &lt;Footer>
+        {taskMode === "Add" &amp;&amp; (
+          &lt;AddTaskBtn onClick={handleSubmitTask}>Add a task&lt;/AddTaskBtn>
+        )}
+        {taskMode === "Edit" &amp;&amp; (
+          &lt;AddTaskBtn onClick={submitEditTask}>Edit a task&lt;/AddTaskBtn>
+        )}
+      &lt;/Footer>
+    &lt;/ModalContainer>
+  );
+};
+
+export default TaskModal;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

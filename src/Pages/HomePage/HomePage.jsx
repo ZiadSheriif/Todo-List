@@ -27,25 +27,6 @@ import CardTask from "Components/CardTask/CardTask";
  * @returns {React.Page}
  */
 const HomePage = ({ handleToggleTheme, setCheckedSwitch, checkedSwitch }) => {
-  // const newTask = [
-  //   {
-  //     title: "Task 1",
-  //     description: "This is a new task",
-  //     date: "2023-03-01",
-  //   },
-  //   {
-  //     title: "Task 2",
-  //     description: "This is a new task",
-  //     date: "2023-03-03",
-  //   },
-  //   {
-  //     title: "Task 3",
-  //     description: "This is a new task",
-  //     date: "2023-04-24",
-  //   },
-  // ];
-  // localStorage.setItem("tasks", JSON.stringify(newTask));
-
   // Use Effects
   const [tasks, setTasks] = useState([]);
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));

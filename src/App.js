@@ -54,7 +54,7 @@ function App() {
     else setCheckedSwitch(JSON.stringify(true));
   };
   useEffect(() => {
-    document.title = "TO DO ";
+    document.title = "TO DO LIST ";
   }, []);
   return (
     <ThemeProvider theme={JSON.parse(theme)}>

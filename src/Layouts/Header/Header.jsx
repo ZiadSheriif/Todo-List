@@ -20,7 +20,7 @@ let currentDate = new Date().toLocaleDateString();
  * Layout that displays header of page which contains search-bar ,date and new task button
  * @returns {React.Layout}
  */
-const Header = ({setTasks,tasks}) => {
+const Header = ({ setTasks, tasks }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <Container>
