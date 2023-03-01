@@ -30,31 +30,50 @@ const formatDate = (dateString) => {
  *
  * @returns {React.Component}
  */
-const CardTask = ({ title, description, date, important, setTasks, tasks }) => {
-  // Use states
-  const [state, setState] = useState("completed");
-  const [starTask, setStarTask] = useState(false);
+const CardTask = ({ taskData, setTasks, tasks }) => {
+  //  state that handle task is completed or  not
+  const [state, setState] = useState(taskData.completed);
+  //  state that handle task is important or not
+  const [starTask, setStarTask] = useState(taskData.important);
   const [deleteTask, setDeleteTask] = useState(false);
   const [showAddNewTask, setShowAddNewTask] = useState(false);
-  // localStorage.removeItem("mangaa");
 
   // handle state change of task progress
   const handleToggleState = () => {
-    if (state === "completed") setState("uncompleted");
-    else setState("completed");
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    const taskToEdit = storedTasks.find(
+      (task) => task.title === taskData.title
+    );
+
+    if (taskToEdit.completed === "completed") {
+      taskToEdit.completed = "uncompleted";
+    } else taskToEdit.completed = "completed";
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    setState(taskToEdit.completed);
   };
 
+  // handle is favorite task or not
   const handleFavoriteTasks = () => {
-    if (starTask) setStarTask(false);
-    else setStarTask(true);
+    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+    const taskToEdit = storedTasks.find(
+      (task) => task.title === taskData.title
+    );
+
+    if (taskToEdit.important) {
+      taskToEdit.important = false;
+    } else taskToEdit.important = true;
+    localStorage.setItem("tasks", JSON.stringify(storedTasks));
+    setStarTask(taskToEdit.important);
   };
 
   return (
     <CardContainer style={{ width: "18rem" }}>
       <Card.Body>
-        <Card.Title>{title}</Card.Title>
-        <Card.Subtitle className="mb-2 text-dark">{description}</Card.Subtitle>
-        <Card.Text>{formatDate(date)}</Card.Text>
+        <Card.Title>{taskData.title}</Card.Title>
+        <Card.Subtitle className="mb-2 text-dark">
+          {taskData.description}
+        </Card.Subtitle>
+        <Card.Text>{formatDate(taskData.date)}</Card.Text>
       </Card.Body>
       <hr />
       <Footer>
@@ -77,14 +96,14 @@ const CardTask = ({ title, description, date, important, setTasks, tasks }) => {
         deleteTask={deleteTask}
         setDeleteTask={setDeleteTask}
         singleTask={true}
-        titleTask={title}
+        titleTask={taskData.title}
         setTasks={setTasks}
       />
       <TaskModal
         showAddNewTask={showAddNewTask}
         setShowAddNewTask={setShowAddNewTask}
         taskMode={"Edit"}
-        titleTask={title}
+        titleTask={taskData.title}
         tasks={tasks}
         setTasks={setTasks}
       />

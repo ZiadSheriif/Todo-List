@@ -46,6 +46,7 @@ const RightSideBar = ({
       show={true}
       backdrop={false}
       enforceFocus={false}
+      scroll={true}
     >
       <Header>
         <Offcanvas.Title>

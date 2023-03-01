@@ -23,9 +23,9 @@ export const CenterContainer = styled.div`
 `;
 export const ContainerTasks = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
   gap: 16px;
-  overflow: auto;
 `;
 export const Section = styled.div`
   width: 20%;
