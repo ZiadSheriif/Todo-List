@@ -15,7 +15,12 @@ const LeftSideBar = ({ setTasks, tasks }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <>
-      <OffcanvasContainer show={true} backdrop={false} enforceFocus={false}>
+      <OffcanvasContainer
+        show={true}
+        backdrop={false}
+        enforceFocus={false}
+        scroll={true}
+      >
         <Header>
           <Offcanvas.Title>to-do list</Offcanvas.Title>
           <TaskBtn

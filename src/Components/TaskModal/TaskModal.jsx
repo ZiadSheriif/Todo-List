@@ -16,6 +16,36 @@ import {
   DropdownContainer,
 } from "./TaskModal.styled";
 
+const newTask = [
+  {
+    title: "Task 1",
+    description: "This is a new task",
+    date: "2023-03-01",
+    important: true,
+    completed: "uncompleted",
+  },
+  {
+    title: "Task 2",
+    description: "This is a new task",
+    date: "2023-03-03",
+    important: false,
+    completed: "uncompleted",
+  },
+  {
+    title: "Task 3",
+    description: "This is a new task",
+    date: "2023-04-24",
+    important: true,
+    completed: "completed",
+  },
+];
+
+// handle case if user delete it from browser
+const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+if (storedTasks === null) {
+  localStorage.setItem("tasks", JSON.stringify(newTask));
+}
+
 /**
  * Component that displays task modal which have title ,description ,date and status of task
  *
@@ -42,6 +72,7 @@ const TaskModal = ({
         description: task.description,
         date: task.date,
         important: task.important,
+        completed: task.completed,
       };
     }
     return null;
@@ -61,6 +92,9 @@ const TaskModal = ({
   const [important, setImportant] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.important : false
   );
+  const [completed, setCompleted] = useState(
+    taskMode === "Edit" ? getTaskInfo(titleTask)?.completed : "uncompleted"
+  );
   const [directory, setDirectory] = useState("Main");
 
   // functions that handle states
@@ -74,8 +108,6 @@ const TaskModal = ({
   // handle submition of add task
   const handleSubmitTask = (event) => {
     event.preventDefault();
-
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     const found = storedTasks.find((task) => task.title === title);
 
     if (found === undefined && title !== "") {
@@ -87,6 +119,7 @@ const TaskModal = ({
           description: description,
           date: date,
           important: important,
+          completed: "completed",
         },
       ]);
 
@@ -100,19 +133,25 @@ const TaskModal = ({
             description: description,
             date: date,
             important: important,
+            completed: "completed",
           },
         ])
       );
+      clearAllData();
       // close modal window
       setShowAddNewTask(false);
     }
   };
 
   // Submit editing task
-  const submitEditTask = () => {
-    if (title !== "" && title !== titleTask) {
-      setTitle(title);
-    }
+  const submitEditTask = () => {};
+
+  // clear all data
+  const clearAllData = () => {
+    setTitle("");
+    setDescription("");
+    setImportant(false);
+    setCompleted("uncompleted");
   };
 
   // Use Effects
@@ -174,6 +213,7 @@ const TaskModal = ({
               id="state-one"
               onChange={(e) => setImportant(e.target.checked)}
               checked={important}
+              defaultChecked={false}
             />
             <TaskStatus>Mark as important</TaskStatus>
           </ProgressCheck>
@@ -182,6 +222,9 @@ const TaskModal = ({
               className="form-check-input w-5vm"
               type="checkbox"
               id="state-two"
+              onChange={(e) => setCompleted(e.target.checked)}
+              checked={completed}
+              defaultChecked={false}
             />
             <TaskStatus>Mark as completed</TaskStatus>
           </ProgressCheck>

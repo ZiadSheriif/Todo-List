@@ -50,7 +50,8 @@ export const ProfileBtn = styled(Button)`
   background-color: ${({ theme }) => theme.background.secondary}!important;
   width: 80%;
   border: none;
-  color: ${({ theme }) => theme.color.primary};
+  color: #000000;
+  font-style: italic;
   :hover {
     background-color: ${({ theme }) =>
       theme.background.hoverBtnColor} !important;

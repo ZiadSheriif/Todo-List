@@ -26,7 +26,7 @@ import CardTask from "Components/CardTask/CardTask";
  * @param {function handleToggleTheme()} handleToggleTheme  function that toggles the theme
  * @returns {React.Page}
  */
-const HomePage = ({ handleToggleTheme,setCheckedSwitch,checkedSwitch }) => {
+const HomePage = ({ handleToggleTheme, setCheckedSwitch, checkedSwitch }) => {
   // const newTask = [
   //   {
   //     title: "Task 1",
@@ -79,7 +79,9 @@ const HomePage = ({ handleToggleTheme,setCheckedSwitch,checkedSwitch }) => {
                   description={task.description}
                   date={task.date}
                   important={task.important}
+                  complete={task.completed}
                   setTasks={setTasks}
+                  taskData={task}
                 />
               );
             })}
