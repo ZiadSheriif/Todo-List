@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Dropdown from "react-bootstrap/Dropdown";
-import useLocalStorage from "Hooks/useLocalStorage";
 
 import {
   ModalContainer,
@@ -95,7 +94,7 @@ const TaskModal = ({
   const [completed, setCompleted] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.completed : "uncompleted"
   );
-  const [directory, setDirectory] = useState("Main");
+  // const [directory, setDirectory] = useState("Main");
 
   // functions that handle states
   const handleTitle = (event) => setTitle(event.target.value);
@@ -103,7 +102,7 @@ const TaskModal = ({
     setDate(event);
   };
   const handleDescription = (event) => setDescription(event.target.value);
-  const handleDirectory = (event) => setDirectory(event.target.value);
+  // const handleDirectory = (event) => setDirectory(event.target.value);
 
   // handle submition of add task
   const handleSubmitTask = (event) => {
@@ -158,7 +157,7 @@ const TaskModal = ({
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
     if (storedTasks) setTasks(storedTasks);
-  }, []);
+  }, [setTasks]);
 
   return (
     <ModalContainer

@@ -6,7 +6,12 @@ export const InputSearchContainer = styled(Form)`
   margin: 20px;
   position: relative;
   display: inline-block;
-  width: 50%;
+  width: 40%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
   .form-control {
     :focus {
       box-shadow: none !important;

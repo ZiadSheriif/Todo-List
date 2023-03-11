@@ -28,6 +28,11 @@ export const OffcanvasContainer = styled(Offcanvas)`
   hr {
     opacity: 0.1;
   }
+
+  // media query for smaller screens
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 // styles of header
@@ -52,6 +57,10 @@ export const ProfileBtn = styled(Button)`
   border: none;
   color: #000000;
   font-style: italic;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   :hover {
     background-color: ${({ theme }) =>
       theme.background.hoverBtnColor} !important;
@@ -101,7 +110,7 @@ export const ButtonContainer = styled(Button)`
 
   :hover,
   :focus-visible {
-    background-color: ${({ theme }) => theme.background.primary};
+    background-color: ${({ theme }) => theme.background.primary} !important;
     box-shadow: none;
   }
 `;
@@ -112,6 +121,7 @@ export const ProgressBarContainer = styled(ProgressBar)`
 `;
 export const ProgressContainer = styled.div`
   align-items: center;
+  color: ${({ theme }) => theme.color.primary};
   margin: 10px 0;
   width: 100%;
   span {

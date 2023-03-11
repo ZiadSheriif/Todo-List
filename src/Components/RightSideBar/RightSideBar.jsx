@@ -1,10 +1,10 @@
 // Imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import userIcon from "Assets/images/user.jfif";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
@@ -30,15 +30,31 @@ import {
 const RightSideBar = ({
   handleToggleTheme,
   setTasks,
-  setCheckedSwitch,
   checkedSwitch,
+  numberOfCompletedTasks,
+  allTasksLength,
 }) => {
   // const navigate = useNavigate();
   const [deleteTask, setDeleteTask] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState(null);
   // delete all task
   const handleDeleteAllTasks = () => {
     setDeleteTask(true);
   };
+  const calculateProgress = () => {
+    const decimaledNumber = (
+      (numberOfCompletedTasks / allTasksLength) *
+      100
+    ).toFixed(2);
+    const result = decimaledNumber.includes(".")
+      ? parseFloat(decimaledNumber)
+      : parseInt(decimaledNumber);
+    setCompletedTasks(result);
+  };
+
+  useEffect(() => {
+    calculateProgress();
+  }, [completedTasks]);
 
   return (
     <OffcanvasContainer
@@ -67,7 +83,10 @@ const RightSideBar = ({
         </ButtonContainer>{" "}
         <ProgressContainer>
           <span>All tasks</span>
-          <ProgressBarContainer now={60} label={`${70}%`} />
+          <ProgressBarContainer
+            now={completedTasks}
+            label={`${completedTasks}%`}
+          />
         </ProgressContainer>
       </Header>
       <hr />
@@ -76,10 +95,8 @@ const RightSideBar = ({
       </Offcanvas.Body>
       <Footer>
         <DeleteBtn onClick={handleDeleteAllTasks}>Delete all task</DeleteBtn>
-        <ProfileBtn
-        // onClick={() => navigate("https://github.com/ZiadSheriif/Todo-List")}
-        >
-          Projected by Ziad Sherif
+        <ProfileBtn>
+          <a href="https://github.com/ZiadSheriif">Projected by Ziad Sherif</a>
         </ProfileBtn>{" "}
         <DeleteTaskModal
           deleteTask={deleteTask}

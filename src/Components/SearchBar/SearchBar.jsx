@@ -6,13 +6,7 @@ import { InputSearchContainer, StyledSearchIcon } from "./SearchBar.styled";
  * Component that allows user to search on a specific task
  * @returns {React.Component}
  */
-const SearchBar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
+const SearchBar = ({ handleInputChange, searchTerm }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
   };

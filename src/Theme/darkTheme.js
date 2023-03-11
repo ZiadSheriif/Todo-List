@@ -21,6 +21,9 @@ const darkTheme = {
     primary: "#0f172a",
     hover: "#6d28d1",
     secondary: "#b22222",
+    hoverBtnColor: "#B40404",
+    viewBtnColor: "#d3d3d3",
+    iconHoverColor: "##9370db",
   },
 };
 

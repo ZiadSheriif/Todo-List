@@ -7,6 +7,9 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
 
 // styles of add new tasks button
@@ -20,11 +23,24 @@ export const TaskBtn = styled(Button)`
   :hover {
     background-color: ${({ theme }) => theme.background.hover} !important;
   }
+
+  @media (min-width: 768px) {
+    width: auto;
+    margin-right: 20px;
+  }
 `;
 export const DateContainer = styled.div`
   position: relative;
   display: flex;
   align-items: center;
+  color: ${({ theme }) => theme.color.primary};
+
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 export const NotificationContainer = styled.div`
   display: flex;
@@ -35,5 +51,12 @@ export const NotificationContainer = styled.div`
     color: ${({ theme }) => theme.canvas} !important;
     margin-left: 10px;
     cursor: pointer;
+  }
+
+  @media (min-width: 768px) {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
   }
 `;

@@ -21,7 +21,9 @@ const lightTheme = {
     primary: "#f1f5f9",
     hover: "#6d28c1",
     secondary: "#FC0404",
-    hoverBtnColor: "#B40404"
+    hoverBtnColor: "#B40404",
+    viewBtnColor: "#d3d3d3",
+    iconHoverColor: "##9370db",
   },
   lineColor: {
     primary: "#fff",

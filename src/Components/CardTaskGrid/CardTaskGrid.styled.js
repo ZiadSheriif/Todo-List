@@ -3,6 +3,8 @@ import Card from "react-bootstrap/Card";
 
 export const CardContainer = styled(Card)`
   background-color: ${({ theme }) => theme.canvas};
+  cursor: pointer;
+
   .card-title {
     color: #fff;
   }
@@ -62,4 +64,17 @@ export const Settings = styled.div`
     cursor: pointer;
   }
   right: 0;
+`;
+export const IconContainer = styled.span`
+  :hover {
+    background-color: ${({ theme }) => theme.background.iconHoverColor};
+  }
+`;
+
+export const DateContainer = styled.div`
+  margin: 2px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  text-align: center;
 `;

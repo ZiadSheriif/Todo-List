@@ -1,5 +1,6 @@
 // Imports
 import React, { useEffect, useState } from "react";
+// import { useParams } from "react-router-dom";
 import { FiList } from "react-icons/fi";
 import { CiGrid41 } from "react-icons/ci";
 
@@ -12,13 +13,15 @@ import {
   CurrentItem,
   ShapeView,
   ChildView,
+  HomeContainer,
 } from "./HomePage.styled";
 
 // Import Components
 import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
 import RightSideBar from "Components/RightSideBar/RightSideBar";
 import Header from "Layouts/Header/Header";
-import CardTask from "Components/CardTask/CardTask";
+import CardTaskGrid from "Components/CardTaskGrid/CardTaskGrid";
+import CardTaskList from "Components/CardTaskList/CardTaskList";
 
 /**
  * Home page that displays main content of website
@@ -26,57 +29,113 @@ import CardTask from "Components/CardTask/CardTask";
  * @param {function handleToggleTheme()} handleToggleTheme  function that toggles the theme
  * @returns {React.Page}
  */
-const HomePage = ({ handleToggleTheme, setCheckedSwitch, checkedSwitch }) => {
-  // Use Effects
+const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
+  // Use States
   const [tasks, setTasks] = useState([]);
+  const [viewTask, setViewTask] = useState(false);
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  const [searchTerm, setSearchTerm] = useState("");
+  // const { taskId } = useParams(); // Extract task ID from URL parameter
 
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleViewList = () => {
+    setViewTask(true);
+  };
+  const handleViewGrid = () => {
+    setViewTask(false);
+  };
+
+  const filteredTasks = tasks.filter((task) =>
+    task.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // Filter tasks to show only the selected task
+  // const selectedTask = tasks.find((task) => task.id === taskId);
+  // const tasksToDisplay = selectedTask ? [selectedTask] : filteredTasks;
+
+  // get completed tasks
+  const completedTasks = tasks.filter((task) => task.completed === "completed");
+  const numberOfCompletedTasks = completedTasks.length;
+
+  // get uncompleted tasks
+  // const uncompletedTasks = tasks.filter(
+  //   (task) => task.completed === "uncompleted"
+  // );
+
+  // get tasks today
+  // const today = new Date().toISOString().slice(0, 10); // Get today's date in ISO string format (yyyy-mm-dd)
+  // const todaysTasks = tasks.filter((task) => task.date === today);
+
+  // get important tasks
+  // const importantTasks = tasks.filter(
+  //   (task) => task.importance === "important"
+  // );
+
+  // Use Effects
   useEffect(() => {}, [storedTasks]);
   return (
-    <Container>
-      <Section>
-        <LeftSideBar setTasks={setTasks} tasks={tasks} />
-      </Section>
-      <CenterContainer>
-        <Header setTasks={setTasks} tasks={tasks} />
-        <CurrentItem>
-          All tasks ({storedTasks && storedTasks.length} tasks)
-        </CurrentItem>
-        <ShapeView>
-          <ChildView>
-            <FiList size={25} />
-          </ChildView>
-          <ChildView>
-            <CiGrid41 size={25} />
-          </ChildView>
-        </ShapeView>
-        <ContainerTasks>
-          {storedTasks &&
-            storedTasks.map((task, index) => {
-              return (
-                <CardTask
-                  key={index}
-                  title={task.title}
-                  description={task.description}
-                  date={task.date}
-                  important={task.important}
-                  complete={task.completed}
-                  setTasks={setTasks}
-                  taskData={task}
-                />
-              );
-            })}
-        </ContainerTasks>
-      </CenterContainer>
-      <Section>
-        <RightSideBar
-          handleToggleTheme={handleToggleTheme}
-          setTasks={setTasks}
-          setCheckedSwitch={setCheckedSwitch}
-          checkedSwitch={checkedSwitch}
-        />
-      </Section>
-    </Container>
+    <HomeContainer>
+      <Container>
+        <Section>
+          <LeftSideBar setTasks={setTasks} tasks={tasks} />
+        </Section>
+        <CenterContainer>
+          <Header
+            setTasks={setTasks}
+            tasks={tasks}
+            handleInputChange={handleInputChange}
+            searchTerm={searchTerm}
+          />
+          <CurrentItem>
+            All tasks ({storedTasks && storedTasks.length} tasks)
+          </CurrentItem>
+          <ShapeView>
+            <ChildView onClick={handleViewList}>
+              <FiList size={25} />
+            </ChildView>
+            <ChildView onClick={handleViewGrid}>
+              <CiGrid41 size={25} />
+            </ChildView>
+          </ShapeView>
+          <ContainerTasks>
+            {!viewTask &&
+              storedTasks &&
+              filteredTasks.map((task, index) => {
+                return (
+                  <CardTaskGrid
+                    key={index}
+                    setTasks={setTasks}
+                    taskData={task}
+                  />
+                );
+              })}
+            {viewTask &&
+              storedTasks &&
+              filteredTasks.map((task, index) => {
+                return (
+                  <CardTaskList
+                    key={index}
+                    setTasks={setTasks}
+                    taskData={task}
+                  />
+                );
+              })}
+          </ContainerTasks>
+        </CenterContainer>
+        <Section>
+          <RightSideBar
+            handleToggleTheme={handleToggleTheme}
+            setTasks={setTasks}
+            checkedSwitch={checkedSwitch}
+            numberOfCompletedTasks={numberOfCompletedTasks}
+            allTasksLength={storedTasks.length}
+          />
+        </Section>
+      </Container>
+    </HomeContainer>
   );
 };
 

@@ -20,14 +20,18 @@ let currentDate = new Date().toLocaleDateString();
  * Layout that displays header of page which contains search-bar ,date and new task button
  * @returns {React.Layout}
  */
-const Header = ({ setTasks, tasks }) => {
+const Header = ({ setTasks, tasks, handleInputChange, searchTerm }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
   return (
     <Container>
-      <SearchBar />
+      <SearchBar
+        tasks={tasks}
+        handleInputChange={handleInputChange}
+        searchTerm={searchTerm}
+      />
       <DateContainer>{currentDate}</DateContainer>
       <NotificationContainer>
-        <MdNotifications size={32} />
+        <MdNotifications size={28} />
         <TaskBtn
           onClick={() => {
             setShowAddNewTask(true);

@@ -22,6 +22,10 @@ export const OffcanvasContainer = styled(Offcanvas)`
       }
     }
   }
+  // media query for smaller screens
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 `;
 
 // styles of header
@@ -47,5 +51,9 @@ export const TaskBtn = styled(Button)`
 
   :hover {
     background-color: ${({ theme }) => theme.background.hover} !important;
+  }
+  // media query for smaller screens
+  @media only screen and (max-width: 767px) {
+    margin: 20px 0;
   }
 `;

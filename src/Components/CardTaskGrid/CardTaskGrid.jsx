@@ -4,33 +4,28 @@ import Card from "react-bootstrap/Card";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { BsFillCalendarDateFill } from "react-icons/bs";
 
 //import styles
-import { CardContainer, StatusBtn, Footer, Settings } from "./CardTask.styled";
+import {
+  CardContainer,
+  StatusBtn,
+  Footer,
+  Settings,
+  IconContainer,
+  DateContainer,
+} from "./CardTaskGrid.styled";
 
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
 import TaskModal from "Components/TaskModal/TaskModal";
-
-/**
- * function that handles  date format
- * @param {string} dateString
- * @returns formated date  string
- */
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const formatedDate = day + "/" + month + "/" + year;
-  return formatedDate;
-};
+import formatDate from "Utils/formatDate";
 /**
  * Component that displays card task that contains the information of task
  *
  * @returns {React.Component}
  */
-const CardTask = ({ taskData, setTasks, tasks }) => {
+const CardTaskGrid = ({ taskData, setTasks, tasks }) => {
   //  state that handle task is completed or  not
   const [state, setState] = useState(taskData.completed);
   //  state that handle task is important or not
@@ -73,7 +68,14 @@ const CardTask = ({ taskData, setTasks, tasks }) => {
         <Card.Subtitle className="mb-2 text-dark">
           {taskData.description}
         </Card.Subtitle>
-        <Card.Text>{formatDate(taskData.date)}</Card.Text>
+        <Card.Text>
+          <DateContainer>
+            <span>
+              <BsFillCalendarDateFill />
+            </span>
+            <span>{formatDate(taskData.date)}</span>
+          </DateContainer>
+        </Card.Text>
       </Card.Body>
       <hr />
       <Footer>
@@ -82,14 +84,20 @@ const CardTask = ({ taskData, setTasks, tasks }) => {
         </StatusBtn>
         <Settings>
           {!starTask && (
-            <AiOutlineStar onClick={handleFavoriteTasks} size={25} />
+            <IconContainer>
+              <AiOutlineStar onClick={handleFavoriteTasks} size={25} />
+            </IconContainer>
           )}
           {starTask && <AiFillStar onClick={handleFavoriteTasks} size={25} />}
-          <RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
-          <BiDotsVerticalRounded
-            onClick={() => setShowAddNewTask(true)}
-            size={25}
-          />
+          <IconContainer>
+            <RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
+          </IconContainer>
+          <IconContainer>
+            <BiDotsVerticalRounded
+              onClick={() => setShowAddNewTask(true)}
+              size={25}
+            />
+          </IconContainer>
         </Settings>
       </Footer>
       <DeleteTaskModal
@@ -111,4 +119,4 @@ const CardTask = ({ taskData, setTasks, tasks }) => {
   );
 };
 
-export default CardTask;
+export default CardTaskGrid;

@@ -61,7 +61,6 @@ function App() {
       <HomePage
         handleToggleTheme={handleToggleTheme}
         checkedSwitch={checkedSwitch}
-        setCheckedSwitch={setCheckedSwitch}
       />
     </ThemeProvider>
   );

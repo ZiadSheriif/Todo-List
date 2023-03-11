@@ -33,8 +33,8 @@ const LeftSideBar = ({ setTasks, tasks }) => {
         </Header>
         <Offcanvas.Body>
           <Dropdown.Item href="today-tasks">Today's Tasks</Dropdown.Item>
-          <Dropdown.Item href="aLl-tasks">All Tasks</Dropdown.Item>
-          <Dropdown.Item href="omportant-tasks">Important Tasks</Dropdown.Item>
+          <Dropdown.Item href="all-tasks">All Tasks</Dropdown.Item>
+          <Dropdown.Item href="important-tasks">Important Tasks</Dropdown.Item>
           <Dropdown.Item href="completed-tasks">Completed Tasks</Dropdown.Item>
           <Dropdown.Item href="uncompleted-tasks">
             Unompleted Tasks
