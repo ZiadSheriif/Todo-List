@@ -46,12 +46,16 @@ if (storedTasks === null) {
 }
 
 /**
- * Component that displays task modal which have title ,description ,date and status of task
- *
- * @param {boolean} showAddNewTask value that contains on or off modal task
- * @param {function setShowAddNewTask()} setShowAddNewTask function that sets value of on or off of task modal
- * @returns {React.Component}
- */
+
+* Component that displays task modal which have title ,description ,date and status of task
+* @param {boolean} showAddNewTask - A value that contains on or off modal task
+* @param {function} setShowAddNewTask - A function that sets value of on or off of task modal
+* @param {string} taskMode - A string that indicates whether it is Add or Edit mode
+* @param {string} titleTask - A string that contains the title of the task being edited
+* @param {function} setTasks - A function that sets the state of the tasks
+* @param {array} tasks - An array that contains the list of tasks
+* @returns {React.Component}
+*/
 
 const TaskModal = ({
   showAddNewTask,

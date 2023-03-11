@@ -1,11 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import Form from "react-bootstrap/Form";
+
+// import styles
 import { InputSearchContainer, StyledSearchIcon } from "./SearchBar.styled";
 
 /**
- * Component that allows user to search on a specific task
- * @returns {React.Component}
+ * SearchBar component allows the user to search for a specific task by entering a search term.
+ *
+ * @param {Object} props - The component props.
+ * @param {Function} props.handleInputChange - Function that handles input change on the search bar.
+ * @param {string} props.searchTerm - The search term entered by the user.
+ *
+ * @returns {React.Component} - A React component that renders a search bar.
  */
+
 const SearchBar = ({ handleInputChange, searchTerm }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
