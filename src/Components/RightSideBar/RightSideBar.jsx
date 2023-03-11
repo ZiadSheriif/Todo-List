@@ -4,10 +4,8 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import userIcon from "Assets/images/user.jfif";
-import { useNavigate, Link } from "react-router-dom";
-
-// import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
+// import { useNavigate, Link } from "react-router-dom";
 
 // import styles
 import {
@@ -24,8 +22,15 @@ import {
 } from "./RightSideBar.styled";
 
 /**
- * Component that displays side bar of which includes task progress
- * @returns {React.Component}
+ * Displays the sidebar that includes the task progress, delete all task button, and user profile information.
+ *
+ * @param {Object} props - An object containing the following properties:
+ *   handleToggleTheme {Function} - A function to toggle the theme of the app.
+ *   setTasks {Function} - A function to set the tasks in the app.
+ *   checkedSwitch {Boolean} - A boolean value to indicate whether the dark mode is turned on or off.
+ *   numberOfCompletedTasks {Number} - The number of completed tasks.
+ *   allTasksLength {Number} - The total number of tasks.
+ * @returns {React.Component} - The React component for the right sidebar.
  */
 const RightSideBar = ({
   handleToggleTheme,
@@ -41,6 +46,8 @@ const RightSideBar = ({
   const handleDeleteAllTasks = () => {
     setDeleteTask(true);
   };
+
+  // This function is called to calculate the progress of the completed tasks.
   const calculateProgress = () => {
     const decimaledNumber = (
       (numberOfCompletedTasks / allTasksLength) *
@@ -52,6 +59,7 @@ const RightSideBar = ({
     setCompletedTasks(result);
   };
 
+  // The progress is calculated whenever the completed tasks state changes.
   useEffect(() => {
     calculateProgress();
   }, [completedTasks]);

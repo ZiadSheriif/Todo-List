@@ -2,14 +2,18 @@
 import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Dropdown from "react-bootstrap/Dropdown";
-import { OffcanvasContainer, Header, TaskBtn } from "./LeftSideBar.styled";
-
-// import components
 import TaskModal from "Components/TaskModal/TaskModal";
 
+// import styles
+import { OffcanvasContainer, Header, TaskBtn } from "./LeftSideBar.styled";
+
 /**
- * Component that displays side bar of which includes task progress
- * @returns {React.Component}
+ * Component that displays the left sidebar of the to-do list app, including options for different task views and the ability to add new tasks.
+ *
+ * @param {Object} props - An object containing the following properties:
+ *   setTasks {Function} - A function to set the tasks in the app.
+ *   tasks {Array} - An array of task objects to display in the app.
+ * @returns {React.Component} - The React component for the left sidebar.
  */
 const LeftSideBar = ({ setTasks, tasks }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);

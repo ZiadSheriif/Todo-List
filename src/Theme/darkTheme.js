@@ -1,23 +1,30 @@
 /**
- * light theme colors
+ * An object containing dark theme colors for a website.
  *
- * @type {{id:string}}
+ * @typedef {Object} darkTheme
+ * @property {string} id - The ID of the theme.
+ * @property {string} canvas - The background color of the website.
+ * @property {Object} color - The colors of the text on the website.
+ * @property {string} color.primary - The primary color of the text on the website.
+ * @property {string} color.hover - The color of the text on hover.
+ * @property {string} color.muted - The muted color of the text on the website.
+ * @property {Object} background - The colors of the backgrounds in the website.
+ * @property {string} background.primary - The primary color of the background on the website.
+ * @property {string} background.hover - The color of the background on hover.
+ * @property {string} background.secondary - The secondary color of the background on the website.
+ * @property {string} background.hoverBtnColor - The color of the button on hover.
+ * @property {string} background.viewBtnColor - The color of the view button.
+ * @property {string} background.iconHoverColor - The color of the icon on hover.
  */
 const darkTheme = {
-  // The id of the theme
   id: "dark",
-  // The canvas color is the background color of the website
   canvas: "#4c1d95",
-  // The colors of the text on the website
   color: {
-    // The color of the text on the website
     primary: "#808080",
     hover: "#f8f8ff",
     muted: "#7c7c7c",
   },
-  // The colors of the backgrounds in the website
   background: {
-    // The primary color of the background on the website
     primary: "#0f172a",
     hover: "#6d28d1",
     secondary: "#b22222",
