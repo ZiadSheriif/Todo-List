@@ -12,6 +12,7 @@ import {
 // import components
 import SearchBar from "Components/SearchBar/SearchBar";
 import TaskModal from "Components/TaskModal/TaskModal";
+import ToastModal from "Components/ToastModal/ToastModal";
 import { MdNotifications } from "react-icons/md";
 
 // Get the current date
@@ -29,12 +30,17 @@ let currentDate = new Date().toLocaleDateString();
 const Header = ({ setTasks, tasks, handleInputChange, searchTerm }) => {
   // State to control the visibility of the add new task modal
   const [showAddNewTask, setShowAddNewTask] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   /**
    * Handles the click event for the new task button and shows the add new task modal
    */
   const handleNewTaskClick = () => {
     setShowAddNewTask(true);
+  };
+
+  const handleShowToast = () => {
+    setShowToast(!showToast);
   };
 
   return (
@@ -45,7 +51,7 @@ const Header = ({ setTasks, tasks, handleInputChange, searchTerm }) => {
         searchTerm={searchTerm}
       />
       <DateContainer>{currentDate}</DateContainer>
-      <NotificationContainer>
+      <NotificationContainer onClick={handleShowToast}>
         <MdNotifications size={28} />
         <TaskBtn onClick={handleNewTaskClick} variant="primary">
           Add New Task
@@ -58,6 +64,7 @@ const Header = ({ setTasks, tasks, handleInputChange, searchTerm }) => {
         setTasks={setTasks}
         tasks={tasks}
       />
+      <ToastModal showToast={showToast} setShowToast={setShowToast} />
     </Container>
   );
 };

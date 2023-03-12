@@ -10,6 +10,7 @@ export const CardContainer = styled(Card)`
   }
   .card-subtitle {
     color: #f0fff0;
+    height: auto;
   }
   hr {
     opacity: 0.2;

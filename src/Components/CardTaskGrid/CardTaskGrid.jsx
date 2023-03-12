@@ -88,7 +88,9 @@ const CardTaskGrid = ({ taskData, setTasks, tasks }) => {
               <AiOutlineStar onClick={handleFavoriteTasks} size={25} />
             </IconContainer>
           )}
-          {starTask && <AiFillStar onClick={handleFavoriteTasks} size={25} />}
+          <IconContainer>
+            {starTask && <AiFillStar onClick={handleFavoriteTasks} size={25} />}
+          </IconContainer>
           <IconContainer>
             <RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
           </IconContainer>
