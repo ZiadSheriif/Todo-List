@@ -147,7 +147,26 @@ const TaskModal = ({
   };
 
   // Submit editing task
-  const submitEditTask = () => {};
+  const handleEditTask = (event) => {
+    event.preventDefault();
+    const editedTask = {
+      title: title,
+      description: description,
+      date: date,
+      important: important,
+      completed: completed,
+    };
+    const newTasks = storedTasks.map((task) => {
+      if (task.title === titleTask) {
+        return editedTask;
+      } else {
+        return task;
+      }
+    });
+    setTasks(newTasks);
+    localStorage.setItem("tasks", JSON.stringify(newTasks));
+    setShowAddNewTask(false);
+  };
 
   // clear all data
   const clearAllData = () => {
@@ -238,7 +257,7 @@ const TaskModal = ({
           <AddTaskBtn onClick={handleSubmitTask}>Add a task</AddTaskBtn>
         )}
         {taskMode === "Edit" && (
-          <AddTaskBtn onClick={submitEditTask}>Edit a task</AddTaskBtn>
+          <AddTaskBtn onClick={handleEditTask}>Edit a task</AddTaskBtn>
         )}
       </Footer>
     </ModalContainer>
