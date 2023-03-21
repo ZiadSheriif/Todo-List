@@ -20,8 +20,7 @@ import {
 import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
 import RightSideBar from "Components/RightSideBar/RightSideBar";
 import Header from "Layouts/Header/Header";
-import CardTaskGrid from "Components/CardTaskGrid/CardTaskGrid";
-import CardTaskList from "Components/CardTaskList/CardTaskList";
+import CardTask from "Components/CardTask/CardTask";
 
 /**
  * Home page that displays main content of website
@@ -32,7 +31,7 @@ import CardTaskList from "Components/CardTaskList/CardTaskList";
 const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   // Use States
   const [tasks, setTasks] = useState([]);
-  const [viewTask, setViewTask] = useState(false);
+  const [viewTask, setViewTask] = useState(true);
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   const [searchTerm, setSearchTerm] = useState("");
   // const { taskId } = useParams(); // Extract task ID from URL parameter
@@ -42,10 +41,10 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   };
 
   const handleViewList = () => {
-    setViewTask(true);
+    setViewTask(false);
   };
   const handleViewGrid = () => {
-    setViewTask(false);
+    setViewTask(true);
   };
 
   const filteredTasks = tasks.filter((task) =>
@@ -101,25 +100,14 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             </ChildView>
           </ShapeView>
           <ContainerTasks>
-            {!viewTask &&
-              storedTasks &&
+            {storedTasks &&
               filteredTasks.map((task, index) => {
                 return (
-                  <CardTaskGrid
+                  <CardTask
                     key={index}
                     setTasks={setTasks}
                     taskData={task}
-                  />
-                );
-              })}
-            {viewTask &&
-              storedTasks &&
-              filteredTasks.map((task, index) => {
-                return (
-                  <CardTaskList
-                    key={index}
-                    setTasks={setTasks}
-                    taskData={task}
+                    viewTask={viewTask}
                   />
                 );
               })}

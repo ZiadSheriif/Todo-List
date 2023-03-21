@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 export const CardContainer = styled(Card)`
   background-color: ${({ theme }) => theme.canvas};
   cursor: pointer;
+  width: ${({ viewTask }) => (viewTask === true ? "18rem" : "100%")};
 
   .card-title {
     color: #fff;
@@ -14,7 +15,10 @@ export const CardContainer = styled(Card)`
   }
   hr {
     opacity: 0.2;
+    margin: 1px;
   }
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Line = styled.div`
@@ -34,7 +38,6 @@ export const StatusBtn = styled.button`
   font-size: 14px;
   font-weight: 700;
   border: none;
-  /* background-color: #a7f3d0; */
   background-color: ${({ colorState }) =>
     colorState === "uncompleted" ? "#fde68a" : "#a7f3d0"};
   letter-spacing: unset;
@@ -46,7 +49,7 @@ export const StatusBtn = styled.button`
   border-radius: 9999px;
   box-sizing: border-box;
   display: flex;
-  margin: 10px 0;
+  margin: 10px;
   justify-content: center;
   align-items: start;
   width: 40%;
@@ -54,12 +57,14 @@ export const StatusBtn = styled.button`
 export const Footer = styled.footer`
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: ${({ viewTask }) =>
+    viewTask === true ? "space-around" : "space-between"};
   align-items: center;
 `;
 export const Settings = styled.div`
   display: flex;
   justify-content: space-around;
+  margin-right: ${({ viewTask }) => (viewTask === true ? "none" : "20px")};
   svg {
     color: white;
     cursor: pointer;
@@ -77,5 +82,6 @@ export const DateContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: 15px;
+  bottom: 0;
   text-align: center;
 `;

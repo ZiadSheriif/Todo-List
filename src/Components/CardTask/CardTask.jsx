@@ -14,7 +14,7 @@ import {
   Settings,
   IconContainer,
   DateContainer,
-} from "./CardTaskGrid.styled";
+} from "./CardTask.styled";
 
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
@@ -25,7 +25,7 @@ import formatDate from "Utils/formatDate";
  *
  * @returns {React.Component}
  */
-const CardTaskGrid = ({ taskData, setTasks, tasks }) => {
+const CardTaskGrid = ({ taskData, setTasks, tasks, viewTask }) => {
   //  state that handle task is completed or  not
   const [state, setState] = useState(taskData.completed);
   //  state that handle task is important or not
@@ -62,7 +62,7 @@ const CardTaskGrid = ({ taskData, setTasks, tasks }) => {
   };
 
   return (
-    <CardContainer style={{ width: "18rem" }}>
+    <CardContainer viewTask={viewTask}>
       <Card.Body>
         <Card.Title>{taskData.title}</Card.Title>
         <Card.Subtitle className="mb-2 text-dark">
@@ -78,11 +78,15 @@ const CardTaskGrid = ({ taskData, setTasks, tasks }) => {
         </Card.Text>
       </Card.Body>
       <hr />
-      <Footer>
-        <StatusBtn colorState={state} onClick={handleToggleState}>
+      <Footer viewTask={viewTask}>
+        <StatusBtn
+          viewTask={viewTask}
+          colorState={state}
+          onClick={handleToggleState}
+        >
           {state}
         </StatusBtn>
-        <Settings>
+        <Settings viewTask={viewTask}>
           {!starTask && (
             <IconContainer>
               <AiOutlineStar onClick={handleFavoriteTasks} size={25} />
