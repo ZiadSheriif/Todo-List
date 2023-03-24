@@ -64,7 +64,20 @@ export const NotificationContainer = styled.div`
   }
 `;
 export const NotificationIcon = styled.span`
+  position: relative;
   @media (max-width: 768px) {
     display: none;
   }
+`;
+
+export const NotificationBadge = styled.div`
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 2px;
 `;

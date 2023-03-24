@@ -11,7 +11,7 @@ import { ToastContainer } from "./ToastModal.styled";
  * @param {function} props.setShowToast - A function to set the `showToast` state.
  * @returns {React.Component} - The rendered component.
  */
-const ToastModal = ({ showToast, setShowToast }) => {
+const ToastModal = ({ showToast, setShowToast, TasksCount }) => {
   /**
    * Closes the toast message.
    */
@@ -23,10 +23,10 @@ const ToastModal = ({ showToast, setShowToast }) => {
     <div>
       <ToastContainer show={showToast} onClose={handleCloseToast}>
         <Toast.Header>
-          <strong className="me-auto">Algorithms</strong>
-          <small>11 mins ago</small>
+          <strong className="me-auto">Alerts</strong>
+          <small>today</small>
         </Toast.Header>
-        <Toast.Body>Nothing to show here</Toast.Body>
+        <Toast.Body>You have {TasksCount} uncompleted tasks today</Toast.Body>
       </ToastContainer>
     </div>
   );

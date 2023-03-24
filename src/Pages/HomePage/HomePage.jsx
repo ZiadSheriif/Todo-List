@@ -20,8 +20,8 @@ import {
 import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
 import RightSideBar from "Components/RightSideBar/RightSideBar";
 import Header from "Layouts/Header/Header";
-import CardTask from "Components/CardTask/CardTask";
 import ShowTasks from "Layouts/ShowTasks/ShowTasks";
+import formatDate from "Utils/formatDate";
 
 /**
  * Home page that displays main content of website
@@ -38,8 +38,6 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const location = useLocation();
   const url = location.pathname;
   const NavStateTasks = url.split("/")[1];
-  console.log(NavStateTasks);
-  // console.log(tasks);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -52,32 +50,34 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
     setViewTask(true);
   };
 
-  const filteredTasks = tasks.filter((task) =>
+  // Get the filtered tasks based on the current URL
+  const getFilteredTasks = () => {
+    switch (NavStateTasks) {
+      case "today-tasks":
+        return storedTasks.filter(
+          (task) => formatDate(task.date) === formatDate(new Date())
+        );
+      case "important-tasks":
+        return storedTasks.filter((task) => task.important);
+      case "completed-tasks":
+        return storedTasks.filter((task) => task.completed === "completed");
+      case "uncompleted-tasks":
+        return storedTasks.filter((task) => task.completed === "uncompleted");
+      default:
+        return storedTasks;
+    }
+  };
+
+  // Set the current tasks to be the active link
+  const currentTasksInPageView = getFilteredTasks();
+
+  const filteredTasks = currentTasksInPageView.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(filteredTasks);
-
-  // Filter tasks to show only the selected task
-  // const selectedTask = tasks.find((task) => task.id === taskId);
-  // const tasksToDisplay = selectedTask ? [selectedTask] : filteredTasks;
 
   // get completed tasks
   const completedTasks = tasks.filter((task) => task.completed === "completed");
   const numberOfCompletedTasks = completedTasks.length;
-
-  // get uncompleted tasks
-  // const uncompletedTasks = tasks.filter(
-  //   (task) => task.completed === "uncompleted"
-  // );
-
-  // get tasks today
-  // const today = new Date().toISOString().slice(0, 10); // Get today's date in ISO string format (yyyy-mm-dd)
-  // const todaysTasks = tasks.filter((task) => task.date === today);
-
-  // get important tasks
-  // const importantTasks = tasks.filter(
-  //   (task) => task.importance === "important"
-  // );
 
   // Use Effects
   useEffect(() => {}, [storedTasks]);
@@ -93,9 +93,11 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             tasks={tasks}
             handleInputChange={handleInputChange}
             searchTerm={searchTerm}
+            storedTasks={storedTasks}
           />
           <CurrentItem>
-            {NavStateTasks} ({storedTasks && storedTasks.length} tasks)
+            {NavStateTasks} ({storedTasks && currentTasksInPageView.length}{" "}
+            tasks)
           </CurrentItem>
           <ShapeView>
             <ChildView onClick={handleViewList}>
@@ -157,19 +159,6 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
               }
             />
           </Routes>
-          {/* <ContainerTasks>
-            {storedTasks &&
-              filteredTasks.map((task, index) => {
-                return (
-                  <CardTask
-                    key={index}
-                    setTasks={setTasks}
-                    taskData={task}
-                    viewTask={viewTask}
-                  />
-                );
-              })}
-          </ContainerTasks> */}
         </CenterContainer>
         <Section>
           <RightSideBar
