@@ -20,7 +20,7 @@
  */
 const lightTheme = {
   id: "light",
-  canvas: "#6d28d9",
+  canvas: "#7c3aed",
   color: {
     primary: "#475569",
     hover: "#e31d48",

@@ -18,7 +18,7 @@
  */
 const darkTheme = {
   id: "dark",
-  canvas: "#4c1d95",
+  canvas: "#5b21b6",
   color: {
     primary: "#808080",
     hover: "#f8f8ff",

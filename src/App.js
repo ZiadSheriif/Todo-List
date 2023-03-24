@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -58,10 +59,20 @@ function App() {
   }, []);
   return (
     <ThemeProvider theme={JSON.parse(theme)}>
-      <HomePage
-        handleToggleTheme={handleToggleTheme}
-        checkedSwitch={checkedSwitch}
-      />
+      <BrowserRouter>
+        <Routes>
+          <Route path="" element={<Navigate to="/all-tasks" />} />
+          <Route
+            path="/*"
+            element={
+              <HomePage
+                handleToggleTheme={handleToggleTheme}
+                checkedSwitch={checkedSwitch}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

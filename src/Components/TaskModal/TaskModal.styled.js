@@ -8,9 +8,12 @@ import Dropdown from "react-bootstrap/Dropdown";
 export const DateStyled = styled(DatePicker)`
   width: 100%;
   height: 40px;
-  border: 1px solid #f8f8ff;
+  border: 1px solid #86b7fe;
   :focus {
     border: none !important;
+  }
+  :hover {
+    border: 2px solid ${({ theme }) => theme.canvas} !important;
   }
 `;
 
@@ -38,8 +41,12 @@ export const ModalContainer = styled(Modal)`
 
   .modal-body {
     .form-control {
+      border-color: none !important;
       :focus {
         box-shadow: none;
+      }
+      :hover {
+        border: 2px solid ${({ theme }) => theme.canvas} !important;
       }
     }
   }

@@ -41,6 +41,9 @@ export const DateContainer = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 export const NotificationContainer = styled.div`
   display: flex;
@@ -58,5 +61,10 @@ export const NotificationContainer = styled.div`
     top: 50%;
     right: 20px;
     transform: translateY(-50%);
+  }
+`;
+export const NotificationIcon = styled.span`
+  @media (max-width: 768px) {
+    display: none;
   }
 `;

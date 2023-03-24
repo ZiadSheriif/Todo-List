@@ -9,7 +9,7 @@ export const InputSearchContainer = styled(Form)`
   width: 40%;
 
   @media screen and (max-width: 768px) {
-    width: 100%;
+    width: 45%;
   }
 
   .form-control {

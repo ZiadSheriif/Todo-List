@@ -54,13 +54,16 @@ export const Section = styled.div`
 `;
 export const CurrentItem = styled.div`
   display: flex;
-  left: 0;
   text-align: center;
   align-items: center;
+  text-transform: uppercase;
   margin: 20px 0;
   font-size: 22px;
   font-weight: 500;
   color: ${({ theme }) => theme.color.primary};
+  @media screen and (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const ShapeView = styled.div`

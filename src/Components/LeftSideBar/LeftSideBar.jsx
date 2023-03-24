@@ -3,9 +3,15 @@ import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Dropdown from "react-bootstrap/Dropdown";
 import TaskModal from "Components/TaskModal/TaskModal";
+import { useLocation } from "react-router-dom";
 
 // import styles
-import { OffcanvasContainer, Header, TaskBtn } from "./LeftSideBar.styled";
+import {
+  OffcanvasContainer,
+  Header,
+  TaskBtn,
+  NavBtn,
+} from "./LeftSideBar.styled";
 
 /**
  * Component that displays the left sidebar of the to-do list app, including options for different task views and the ability to add new tasks.
@@ -17,6 +23,9 @@ import { OffcanvasContainer, Header, TaskBtn } from "./LeftSideBar.styled";
  */
 const LeftSideBar = ({ setTasks, tasks }) => {
   const [showAddNewTask, setShowAddNewTask] = useState(false);
+  const location = useLocation();
+  const url = location.pathname;
+  const allTasks = url.split("/")[1];
   return (
     <>
       <OffcanvasContainer
@@ -36,13 +45,21 @@ const LeftSideBar = ({ setTasks, tasks }) => {
           </TaskBtn>{" "}
         </Header>
         <Offcanvas.Body>
-          <Dropdown.Item href="today-tasks">Today's Tasks</Dropdown.Item>
-          <Dropdown.Item href="all-tasks">All Tasks</Dropdown.Item>
-          <Dropdown.Item href="important-tasks">Important Tasks</Dropdown.Item>
-          <Dropdown.Item href="completed-tasks">Completed Tasks</Dropdown.Item>
-          <Dropdown.Item href="uncompleted-tasks">
+          <NavBtn to="today-tasks" exact>
+            Today's Tasks
+          </NavBtn>
+          <NavBtn to="all-tasks" className={allTasks ? "" : "active"}>
+            All Tasks
+          </NavBtn>
+          <NavBtn to="important-tasks" exact>
+            Important Tasks
+          </NavBtn>
+          <NavBtn to="completed-tasks" exact>
+            Completed Tasks
+          </NavBtn>
+          <NavBtn to="uncompleted-tasks" exact>
             Unompleted Tasks
-          </Dropdown.Item>
+          </NavBtn>
         </Offcanvas.Body>
       </OffcanvasContainer>
       <TaskModal

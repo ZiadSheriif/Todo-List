@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
+import { NavLink } from "react-router-dom";
 
 // styles of offcanvas container
 export const OffcanvasContainer = styled(Offcanvas)`
@@ -55,5 +56,21 @@ export const TaskBtn = styled(Button)`
   // media query for smaller screens
   @media only screen and (max-width: 767px) {
     margin: 20px 0;
+  }
+`;
+
+export const NavBtn = styled(NavLink)`
+  display: flex;
+  height: 32px;
+  font-size: 15px;
+  line-height: 17px;
+  font-weight: 400;
+  text-decoration: none;
+  color: ${({ theme }) => theme.color.primary} !important;
+  :hover {
+    color: ${({ theme }) => theme.color.hover} !important;
+  }
+  &.active {
+    color: ${({ theme }) => theme.color.hover} !important;
   }
 `;

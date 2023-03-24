@@ -1,6 +1,8 @@
 // Imports
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FiList } from "react-icons/fi";
 import { CiGrid41 } from "react-icons/ci";
 
@@ -21,6 +23,7 @@ import LeftSideBar from "Components/LeftSideBar/LeftSideBar";
 import RightSideBar from "Components/RightSideBar/RightSideBar";
 import Header from "Layouts/Header/Header";
 import CardTask from "Components/CardTask/CardTask";
+import ShowTasks from "Layouts/ShowTasks/ShowTasks";
 
 /**
  * Home page that displays main content of website
@@ -34,7 +37,9 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const [viewTask, setViewTask] = useState(true);
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   const [searchTerm, setSearchTerm] = useState("");
-  // const { taskId } = useParams(); // Extract task ID from URL parameter
+  const location = useLocation();
+  const url = location.pathname;
+  const NavStateTasks = url.split("/")[1];
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -89,7 +94,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             searchTerm={searchTerm}
           />
           <CurrentItem>
-            All tasks ({storedTasks && storedTasks.length} tasks)
+            {NavStateTasks} ({storedTasks && storedTasks.length} tasks)
           </CurrentItem>
           <ShapeView>
             <ChildView onClick={handleViewList}>
@@ -99,7 +104,59 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
               <CiGrid41 size={25} />
             </ChildView>
           </ShapeView>
-          <ContainerTasks>
+          <Routes>
+            <Route
+              path="all-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+            <Route
+              path="today-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+            <Route
+              path="important-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+            <Route
+              path="completed-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+            <Route
+              path="uncompleted-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+          </Routes>
+          {/* <ContainerTasks>
             {storedTasks &&
               filteredTasks.map((task, index) => {
                 return (
@@ -111,7 +168,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
                   />
                 );
               })}
-          </ContainerTasks>
+          </ContainerTasks> */}
         </CenterContainer>
         <Section>
           <RightSideBar

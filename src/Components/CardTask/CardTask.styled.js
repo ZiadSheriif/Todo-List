@@ -10,15 +10,19 @@ export const CardContainer = styled(Card)`
     color: #fff;
   }
   .card-subtitle {
-    color: #f0fff0;
+    color: rgb(196, 181, 253) !important;
     height: auto;
+  }
+  .card-body {
+    height: 100%;
+    position: relative;
+    /* display: flex; */
+    /* flex-direction: column; */
   }
   hr {
     opacity: 0.2;
     margin: 1px;
   }
-  display: flex;
-  flex-direction: column;
 `;
 
 export const Line = styled.div`

@@ -7,6 +7,7 @@ import {
   Container,
   DateContainer,
   NotificationContainer,
+  NotificationIcon,
 } from "./Header.styled";
 
 // import components
@@ -52,7 +53,9 @@ const Header = ({ setTasks, tasks, handleInputChange, searchTerm }) => {
       />
       <DateContainer>{currentDate}</DateContainer>
       <NotificationContainer onClick={handleShowToast}>
-        <MdNotifications size={28} />
+        <NotificationIcon>
+          <MdNotifications size={28} />
+        </NotificationIcon>
         <TaskBtn onClick={handleNewTaskClick} variant="primary">
           Add New Task
         </TaskBtn>{" "}
