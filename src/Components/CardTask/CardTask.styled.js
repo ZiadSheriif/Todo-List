@@ -5,19 +5,18 @@ export const CardContainer = styled(Card)`
   background-color: ${({ theme }) => theme.canvas};
   cursor: pointer;
   width: ${({ viewTask }) => (viewTask === true ? "18rem" : "100%")};
+  position: relative;
 
   .card-title {
     color: #fff;
   }
   .card-subtitle {
     color: rgb(196, 181, 253) !important;
-    height: auto;
+    margin-bottom: 25px !important;
   }
   .card-body {
     height: 100%;
     position: relative;
-    /* display: flex; */
-    /* flex-direction: column; */
   }
   hr {
     opacity: 0.2;
@@ -82,10 +81,12 @@ export const IconContainer = styled.span`
 `;
 
 export const DateContainer = styled.div`
-  margin: 2px;
+  margin-left: 20px;
   display: flex;
   flex-direction: row;
   gap: 15px;
-  bottom: 0;
-  text-align: center;
+  bottom: 5px;
+  position: absolute;
+  left: 0;
+  right: 0;
 `;

@@ -1,7 +1,6 @@
 // Imports
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FiList } from "react-icons/fi";
 import { CiGrid41 } from "react-icons/ci";
@@ -10,7 +9,6 @@ import { CiGrid41 } from "react-icons/ci";
 import {
   Container,
   CenterContainer,
-  ContainerTasks,
   Section,
   CurrentItem,
   ShapeView,
@@ -40,6 +38,8 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const location = useLocation();
   const url = location.pathname;
   const NavStateTasks = url.split("/")[1];
+  console.log(NavStateTasks);
+  // console.log(tasks);
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -55,6 +55,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  console.log(filteredTasks);
 
   // Filter tasks to show only the selected task
   // const selectedTask = tasks.find((task) => task.id === taskId);

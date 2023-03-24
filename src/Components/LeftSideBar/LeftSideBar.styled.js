@@ -64,13 +64,28 @@ export const NavBtn = styled(NavLink)`
   height: 32px;
   font-size: 15px;
   line-height: 17px;
+  padding: 10px;
   font-weight: 400;
   text-decoration: none;
+  text-align: center;
+  align-items: center;
+  position: relative;
   color: ${({ theme }) => theme.color.primary} !important;
   :hover {
     color: ${({ theme }) => theme.color.hover} !important;
+    background-color: ${({ theme }) =>
+      theme.background.viewBtnColor} !important;
   }
   &.active {
     color: ${({ theme }) => theme.color.hover} !important;
+    ::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 4px;
+      background-color: red !important;
+    }
   }
 `;

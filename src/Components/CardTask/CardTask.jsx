@@ -25,21 +25,18 @@ import formatDate from "Utils/formatDate";
  *
  * @returns {React.Component}
  */
-const CardTaskGrid = ({ taskData, setTasks, tasks, viewTask }) => {
+const CardTask = ({ taskData, setTasks, tasks, viewTask }) => {
   //  state that handle task is completed or  not
   const [state, setState] = useState(taskData.completed);
   //  state that handle task is important or not
   const [starTask, setStarTask] = useState(taskData.important);
   const [deleteTask, setDeleteTask] = useState(false);
   const [showAddNewTask, setShowAddNewTask] = useState(false);
+  const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  const taskToEdit = storedTasks.find((task) => task.title === taskData.title);
 
   // handle state change of task progress
   const handleToggleState = () => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    const taskToEdit = storedTasks.find(
-      (task) => task.title === taskData.title
-    );
-
     if (taskToEdit.completed === "completed") {
       taskToEdit.completed = "uncompleted";
     } else taskToEdit.completed = "completed";
@@ -49,11 +46,6 @@ const CardTaskGrid = ({ taskData, setTasks, tasks, viewTask }) => {
 
   // handle is favorite task or not
   const handleFavoriteTasks = () => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    const taskToEdit = storedTasks.find(
-      (task) => task.title === taskData.title
-    );
-
     if (taskToEdit.important) {
       taskToEdit.important = false;
     } else taskToEdit.important = true;
@@ -125,4 +117,4 @@ const CardTaskGrid = ({ taskData, setTasks, tasks, viewTask }) => {
   );
 };
 
-export default CardTaskGrid;
+export default CardTask;
