@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/SearchBar/SearchBar.jsx</title>
+    <title>JSDoc: Source: Layouts/ShowTasks/ShowTasks.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/SearchBar/SearchBar.jsx</h1>
+    <h1 class="page-title">Source: Layouts/ShowTasks/ShowTasks.jsx</h1>
 
     
 
@@ -26,48 +26,40 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import Form from "react-bootstrap/Form";
-
-// import styles
-import { InputSearchContainer, StyledSearchIcon } from "./SearchBar.styled";
+            <pre class="prettyprint source linenums"><code>// Imports
+import React from "react";
+import CardTask from "Components/CardTask/CardTask";
+import { ContainerTasks } from "Pages/HomePage/HomePage.styled";
 
 /**
- * SearchBar component allows the user to search for a specific task by entering a search term.
- *
+ * Renders a list of tasks based on the `filteredTasks` prop passed to it.
  * @param {Object} props - The component props.
- * @param {Function} props.handleInputChange - Function that handles input change on the search bar.
- * @param {string} props.searchTerm - The search term entered by the user.
- *
- * @returns {React.Component} - A React component that renders a search bar.
+ * @param {Array} props.filteredTasks - The list of tasks to render.
+ * @param {Function} props.setTasks - The function to update the list of tasks.
+ * @param {Function} props.viewTask - The function to display a single task.
+ * @returns {React.Component} A React component that displays a list of tasks.
  */
 
-const SearchBar = ({ handleInputChange, searchTerm }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(event);
-    }
-  };
-
+const ShowTasks = ({ filteredTasks, setTasks, viewTask }) => {
   return (
-    &lt;InputSearchContainer>
-      &lt;StyledSearchIcon size={22} />
-      &lt;Form.Control
-        type="text"
-        onChange={handleInputChange}
-        placeholder="Search on Task"
-        onKeyDown={handleKeyPress}
-        value={searchTerm}
-      />
-    &lt;/InputSearchContainer>
+    &lt;>
+      &lt;ContainerTasks>
+        {filteredTasks.map((task, index) => {
+          return (
+            &lt;CardTask
+              key={index}
+              setTasks={setTasks}
+              taskData={task}
+              viewTask={viewTask}
+            />
+          );
+        })}
+      &lt;/ContainerTasks>
+    &lt;/>
   );
 };
 
-export default SearchBar;
+export default ShowTasks;
 </code></pre>
         </article>
     </section>

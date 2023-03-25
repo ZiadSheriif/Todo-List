@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/SearchBar/SearchBar.jsx</title>
+    <title>JSDoc: Source: Utils/formatDate.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/SearchBar/SearchBar.jsx</h1>
+    <h1 class="page-title">Source: Utils/formatDate.js</h1>
 
     
 
@@ -26,48 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from "react";
-import Form from "react-bootstrap/Form";
-
-// import styles
-import { InputSearchContainer, StyledSearchIcon } from "./SearchBar.styled";
-
-/**
- * SearchBar component allows the user to search for a specific task by entering a search term.
+            <pre class="prettyprint source linenums"><code>/**
+ * Formats a given date string in the format "day/month/year".
  *
- * @param {Object} props - The component props.
- * @param {Function} props.handleInputChange - Function that handles input change on the search bar.
- * @param {string} props.searchTerm - The search term entered by the user.
- *
- * @returns {React.Component} - A React component that renders a search bar.
+ * @param {string} dateString - A string representing a valid date.
+ * @returns {string} A string representing the formatted date in the format "day/month/year".
  */
+const formatDate = (dateString) => {
+  // Create a new Date object from the dateString parameter.
+  const date = new Date(dateString);
 
-const SearchBar = ({ handleInputChange, searchTerm }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
+  // Extract the day, month, and year components from the Date object.
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(event);
-    }
-  };
+  // Format the date as a string in the format "day/month/year".
+  const formattedDate = `${day}/${month}/${year}`;
 
-  return (
-    &lt;InputSearchContainer>
-      &lt;StyledSearchIcon size={22} />
-      &lt;Form.Control
-        type="text"
-        onChange={handleInputChange}
-        placeholder="Search on Task"
-        onKeyDown={handleKeyPress}
-        value={searchTerm}
-      />
-    &lt;/InputSearchContainer>
-  );
+  // Return the formatted date string.
+  return formattedDate;
 };
 
-export default SearchBar;
+export default formatDate;
 </code></pre>
         </article>
     </section>

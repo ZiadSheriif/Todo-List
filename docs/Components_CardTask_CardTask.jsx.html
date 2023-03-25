@@ -32,47 +32,39 @@ import Card from "react-bootstrap/Card";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import { BsFillCalendarDateFill } from "react-icons/bs";
 
 //import styles
-import { CardContainer, StatusBtn, Footer, Settings } from "./CardTask.styled";
+import {
+  CardContainer,
+  StatusBtn,
+  Footer,
+  Settings,
+  IconContainer,
+  DateContainer,
+} from "./CardTask.styled";
 
 // import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
 import TaskModal from "Components/TaskModal/TaskModal";
-
-/**
- * function that handles  date format
- * @param {string} dateString
- * @returns formated date  string
- */
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const year = date.getFullYear();
-  const formatedDate = day + "/" + month + "/" + year;
-  return formatedDate;
-};
+import formatDate from "Utils/formatDate";
 /**
  * Component that displays card task that contains the information of task
  *
  * @returns {React.Component}
  */
-const CardTask = ({ taskData, setTasks, tasks }) => {
+const CardTask = ({ taskData, setTasks, tasks, viewTask }) => {
   //  state that handle task is completed or  not
   const [state, setState] = useState(taskData.completed);
   //  state that handle task is important or not
   const [starTask, setStarTask] = useState(taskData.important);
   const [deleteTask, setDeleteTask] = useState(false);
   const [showAddNewTask, setShowAddNewTask] = useState(false);
+  const storedTasks = JSON.parse(localStorage.getItem("tasks"));
+  const taskToEdit = storedTasks.find((task) => task.title === taskData.title);
 
   // handle state change of task progress
   const handleToggleState = () => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    const taskToEdit = storedTasks.find(
-      (task) => task.title === taskData.title
-    );
-
     if (taskToEdit.completed === "completed") {
       taskToEdit.completed = "uncompleted";
     } else taskToEdit.completed = "completed";
@@ -82,11 +74,6 @@ const CardTask = ({ taskData, setTasks, tasks }) => {
 
   // handle is favorite task or not
   const handleFavoriteTasks = () => {
-    const storedTasks = JSON.parse(localStorage.getItem("tasks"));
-    const taskToEdit = storedTasks.find(
-      (task) => task.title === taskData.title
-    );
-
     if (taskToEdit.important) {
       taskToEdit.important = false;
     } else taskToEdit.important = true;
@@ -95,29 +82,48 @@ const CardTask = ({ taskData, setTasks, tasks }) => {
   };
 
   return (
-    &lt;CardContainer style={{ width: "18rem" }}>
+    &lt;CardContainer viewTask={viewTask}>
       &lt;Card.Body>
         &lt;Card.Title>{taskData.title}&lt;/Card.Title>
         &lt;Card.Subtitle className="mb-2 text-dark">
           {taskData.description}
         &lt;/Card.Subtitle>
-        &lt;Card.Text>{formatDate(taskData.date)}&lt;/Card.Text>
+        &lt;Card.Text>
+          &lt;DateContainer>
+            &lt;span>
+              &lt;BsFillCalendarDateFill />
+            &lt;/span>
+            &lt;span>{formatDate(taskData.date)}&lt;/span>
+          &lt;/DateContainer>
+        &lt;/Card.Text>
       &lt;/Card.Body>
       &lt;hr />
-      &lt;Footer>
-        &lt;StatusBtn colorState={state} onClick={handleToggleState}>
+      &lt;Footer viewTask={viewTask}>
+        &lt;StatusBtn
+          viewTask={viewTask}
+          colorState={state}
+          onClick={handleToggleState}
+        >
           {state}
         &lt;/StatusBtn>
-        &lt;Settings>
+        &lt;Settings viewTask={viewTask}>
           {!starTask &amp;&amp; (
-            &lt;AiOutlineStar onClick={handleFavoriteTasks} size={25} />
+            &lt;IconContainer>
+              &lt;AiOutlineStar onClick={handleFavoriteTasks} size={25} />
+            &lt;/IconContainer>
           )}
-          {starTask &amp;&amp; &lt;AiFillStar onClick={handleFavoriteTasks} size={25} />}
-          &lt;RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
-          &lt;BiDotsVerticalRounded
-            onClick={() => setShowAddNewTask(true)}
-            size={25}
-          />
+          &lt;IconContainer>
+            {starTask &amp;&amp; &lt;AiFillStar onClick={handleFavoriteTasks} size={25} />}
+          &lt;/IconContainer>
+          &lt;IconContainer>
+            &lt;RiDeleteBinLine onClick={() => setDeleteTask(true)} size={25} />
+          &lt;/IconContainer>
+          &lt;IconContainer>
+            &lt;BiDotsVerticalRounded
+              onClick={() => setShowAddNewTask(true)}
+              size={25}
+            />
+          &lt;/IconContainer>
         &lt;/Settings>
       &lt;/Footer>
       &lt;DeleteTaskModal
@@ -150,13 +156,13 @@ export default CardTask;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#ShowTasks">ShowTasks</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#ToastModal">ToastModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Mar 25 2023 02:21:53 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

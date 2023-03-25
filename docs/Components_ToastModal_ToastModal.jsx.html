@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Components/SearchBar/SearchBar.jsx</title>
+    <title>JSDoc: Source: Components/ToastModal/ToastModal.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Components/SearchBar/SearchBar.jsx</h1>
+    <h1 class="page-title">Source: Components/ToastModal/ToastModal.jsx</h1>
 
     
 
@@ -27,47 +27,42 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import Form from "react-bootstrap/Form";
+import Toast from "react-bootstrap/Toast";
 
-// import styles
-import { InputSearchContainer, StyledSearchIcon } from "./SearchBar.styled";
+import { ToastContainer } from "./ToastModal.styled";
 
 /**
- * SearchBar component allows the user to search for a specific task by entering a search term.
+ * A component that displays a toast message.
  *
  * @param {Object} props - The component props.
- * @param {Function} props.handleInputChange - Function that handles input change on the search bar.
- * @param {string} props.searchTerm - The search term entered by the user.
- *
- * @returns {React.Component} - A React component that renders a search bar.
+ * @param {boolean} props.showToast - Whether to show the toast message.
+ * @param {function} props.setShowToast - A function to set the `showToast` state.
+ * @returns {React.Component} - The rendered component.
  */
-
-const SearchBar = ({ handleInputChange, searchTerm }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSubmit(event);
-    }
+const ToastModal = ({ showToast, setShowToast, TasksCount }) => {
+  /**
+   * Closes the toast message.
+   */
+  const handleCloseToast = () => {
+    setShowToast(false);
   };
 
   return (
-    &lt;InputSearchContainer>
-      &lt;StyledSearchIcon size={22} />
-      &lt;Form.Control
-        type="text"
-        onChange={handleInputChange}
-        placeholder="Search on Task"
-        onKeyDown={handleKeyPress}
-        value={searchTerm}
-      />
-    &lt;/InputSearchContainer>
+    &lt;div>
+      &lt;ToastContainer show={showToast} onClose={handleCloseToast}>
+        &lt;Toast.Header>
+          &lt;strong className="me-auto text-info">Alerts&lt;/strong>
+          &lt;small>today&lt;/small>
+        &lt;/Toast.Header>
+        &lt;Toast.Body>
+          You have &lt;strong>{TasksCount} un-completed&lt;/strong> tasks today
+        &lt;/Toast.Body>
+      &lt;/ToastContainer>
+    &lt;/div>
   );
 };
 
-export default SearchBar;
+export default ToastModal;
 </code></pre>
         </article>
     </section>

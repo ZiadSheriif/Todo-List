@@ -27,15 +27,13 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>// Imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import userIcon from "Assets/images/user.jfif";
-// import { useNavigate } from "react-router-dom";
-
-// import components
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
+// import { useNavigate, Link } from "react-router-dom";
 
 // import styles
 import {
@@ -52,21 +50,47 @@ import {
 } from "./RightSideBar.styled";
 
 /**
- * Component that displays side bar of which includes task progress
- * @returns {React.Component}
+ * Displays the sidebar that includes the task progress, delete all task button, and user profile information.
+ *
+ * @param {Object} props - An object containing the following properties:
+ *   handleToggleTheme {Function} - A function to toggle the theme of the app.
+ *   setTasks {Function} - A function to set the tasks in the app.
+ *   checkedSwitch {Boolean} - A boolean value to indicate whether the dark mode is turned on or off.
+ *   numberOfCompletedTasks {Number} - The number of completed tasks.
+ *   allTasksLength {Number} - The total number of tasks.
+ * @returns {React.Component} - The React component for the right sidebar.
  */
 const RightSideBar = ({
   handleToggleTheme,
   setTasks,
-  setCheckedSwitch,
   checkedSwitch,
+  numberOfCompletedTasks,
+  allTasksLength,
 }) => {
   // const navigate = useNavigate();
   const [deleteTask, setDeleteTask] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState(null);
   // delete all task
   const handleDeleteAllTasks = () => {
     setDeleteTask(true);
   };
+
+  // This function is called to calculate the progress of the completed tasks.
+  const calculateProgress = () => {
+    const decimaledNumber = (
+      (numberOfCompletedTasks / allTasksLength) *
+      100
+    ).toFixed(2);
+    const result = decimaledNumber.includes(".")
+      ? parseFloat(decimaledNumber)
+      : parseInt(decimaledNumber);
+    setCompletedTasks(result);
+  };
+
+  // The progress is calculated whenever the completed tasks state changes.
+  useEffect(() => {
+    calculateProgress();
+  }, [completedTasks]);
 
   return (
     &lt;OffcanvasContainer
@@ -95,7 +119,10 @@ const RightSideBar = ({
         &lt;/ButtonContainer>{" "}
         &lt;ProgressContainer>
           &lt;span>All tasks&lt;/span>
-          &lt;ProgressBarContainer now={60} label={`${70}%`} />
+          &lt;ProgressBarContainer
+            now={completedTasks}
+            label={`${completedTasks}%`}
+          />
         &lt;/ProgressContainer>
       &lt;/Header>
       &lt;hr />
@@ -104,10 +131,8 @@ const RightSideBar = ({
       &lt;/Offcanvas.Body>
       &lt;Footer>
         &lt;DeleteBtn onClick={handleDeleteAllTasks}>Delete all task&lt;/DeleteBtn>
-        &lt;ProfileBtn
-        // onClick={() => navigate("https://github.com/ZiadSheriif/Todo-List")}
-        >
-          Projected by Ziad Sherif
+        &lt;ProfileBtn>
+          &lt;a href="https://github.com/ZiadSheriif">Projected by Ziad Sherif&lt;/a>
         &lt;/ProfileBtn>{" "}
         &lt;DeleteTaskModal
           deleteTask={deleteTask}
@@ -132,13 +157,13 @@ export default RightSideBar;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#ShowTasks">ShowTasks</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#ToastModal">ToastModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Mar 25 2023 02:21:53 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

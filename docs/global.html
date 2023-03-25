@@ -98,78 +98,6 @@
 
         
             
-<h4 class="name" id="darkTheme"><span class="type-signature">(constant) </span>darkTheme<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    <p>light theme colors</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Theme_darkTheme.js.html">Theme/darkTheme.js</a>, <a href="Theme_darkTheme.js.html#line6">line 6</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
 <h4 class="name" id="defaultTheme"><span class="type-signature">(constant) </span>defaultTheme<span class="type-signature"></span></h4>
 
 
@@ -215,78 +143,6 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="Theme_defaultTheme.js.html">Theme/defaultTheme.js</a>, <a href="Theme_defaultTheme.js.html#line5">line 5</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="lightTheme"><span class="type-signature">(constant) </span>lightTheme<span class="type-signature"> :Object</span></h4>
-
-
-
-
-<div class="description">
-    <p>light theme colors</p>
-</div>
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Object</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Theme_lightTheme.js.html">Theme/lightTheme.js</a>, <a href="Theme_lightTheme.js.html#line6">line 6</a>
     </li></ul></dd>
     
 
@@ -366,7 +222,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_CardTask_CardTask.jsx.html">Components/CardTask/CardTask.jsx</a>, <a href="Components_CardTask_CardTask.jsx.html#line33">line 33</a>
+        <a href="Components_CardTask_CardTask.jsx.html">Components/CardTask/CardTask.jsx</a>, <a href="Components_CardTask_CardTask.jsx.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -420,7 +276,7 @@
     
 
     
-    <h4 class="name" id="DeleteTaskModal"><span class="type-signature"></span>DeleteTaskModal<span class="signature">(deleteTask)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="DeleteTaskModal"><span class="type-signature"></span>DeleteTaskModal<span class="signature">(deleteTask, setDeleteTask, singleTask, titleTask, setTasks)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -428,7 +284,7 @@
 
 
 <div class="description">
-    <p>Component that displays a confirmation modal to delete a certain task</p>
+    <p>Component that displays a confirmation modal to delete a certain task or all tasks</p>
 </div>
 
 
@@ -480,7 +336,99 @@
 
             
 
-            <td class="description last"><p>value that is on or off of confirmation modal</p></td>
+            <td class="description last"><p>Value that is on or off of confirmation modal</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setDeleteTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to set value of deleteTask</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>singleTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Value that represents if only a single task is to be deleted or not</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>titleTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Title of the task to be deleted</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setTasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function to update the task list after task deletion</p></td>
         </tr>
 
     
@@ -521,7 +469,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_DeleteTaskModal_DeleteTaskModal.jsx.html">Components/DeleteTaskModal/DeleteTaskModal.jsx</a>, <a href="Components_DeleteTaskModal_DeleteTaskModal.jsx.html#line14">line 14</a>
+        <a href="Components_DeleteTaskModal_DeleteTaskModal.jsx.html">Components/DeleteTaskModal/DeleteTaskModal.jsx</a>, <a href="Components_DeleteTaskModal_DeleteTaskModal.jsx.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -549,6 +497,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>Returns the delete task confirmation modal</li>
+</ul>
+</div>
+
 
 
 <dl>
@@ -575,7 +529,7 @@
     
 
     
-    <h4 class="name" id="formatDate"><span class="type-signature"></span>formatDate<span class="signature">(dateString)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="formatDate"><span class="type-signature"></span>formatDate<span class="signature">(dateString)</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -583,7 +537,7 @@
 
 
 <div class="description">
-    <p>function that handles  date format</p>
+    <p>Formats a given date string in the format &quot;day/month/year&quot;.</p>
 </div>
 
 
@@ -635,7 +589,7 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A string representing a valid date.</p></td>
         </tr>
 
     
@@ -676,7 +630,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_CardTask_CardTask.jsx.html">Components/CardTask/CardTask.jsx</a>, <a href="Components_CardTask_CardTask.jsx.html#line20">line 20</a>
+        <a href="Utils_formatDate.js.html">Utils/formatDate.js</a>, <a href="Utils_formatDate.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -705,10 +659,22 @@
 
         
 <div class="param-desc">
-    <p>formated date  string</p>
+    <p>A string representing the formatted date in the format &quot;day/month/year&quot;.</p>
 </div>
 
 
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">string</span>
+
+
+    </dd>
+</dl>
 
     
 
@@ -722,7 +688,7 @@
     
 
     
-    <h4 class="name" id="Header"><span class="type-signature"></span>Header<span class="signature">()</span><span class="type-signature"> &rarr; {React.Layout}</span></h4>
+    <h4 class="name" id="Header"><span class="type-signature"></span>Header<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Layout}</span></h4>
     
 
     
@@ -739,6 +705,173 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>setTasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to update the list of tasks</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The list of tasks</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>handleInputChange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to handle changes in the search bar</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>searchTerm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The current search term entered in the search bar</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -774,7 +907,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Layouts_Header_Header.jsx.html">Layouts/Header/Header.jsx</a>, <a href="Layouts_Header_Header.jsx.html#line23">line 23</a>
+        <a href="Layouts_Header_Header.jsx.html">Layouts/Header/Header.jsx</a>, <a href="Layouts_Header_Header.jsx.html#line33">line 33</a>
     </li></ul></dd>
     
 
@@ -802,6 +935,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <p>The header component</p>
+</div>
+
 
 
 <dl>
@@ -920,7 +1057,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Pages_HomePage_HomePage.jsx.html">Pages/HomePage/HomePage.jsx</a>, <a href="Pages_HomePage_HomePage.jsx.html#line29">line 29</a>
+        <a href="Pages_HomePage_HomePage.jsx.html">Pages/HomePage/HomePage.jsx</a>, <a href="Pages_HomePage_HomePage.jsx.html#line32">line 32</a>
     </li></ul></dd>
     
 
@@ -974,7 +1111,7 @@
     
 
     
-    <h4 class="name" id="LeftSideBar"><span class="type-signature"></span>LeftSideBar<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="LeftSideBar"><span class="type-signature"></span>LeftSideBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -982,7 +1119,7 @@
 
 
 <div class="description">
-    <p>Component that displays side bar of which includes task progress</p>
+    <p>Component that displays the left sidebar of the to-do list app, including options for different task views and the ability to add new tasks.</p>
 </div>
 
 
@@ -991,6 +1128,57 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An object containing the following properties:
+setTasks {Function} - A function to set the tasks in the app.
+tasks {Array} - An array of task objects to display in the app.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1026,7 +1214,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_LeftSideBar_LeftSideBar.jsx.html">Components/LeftSideBar/LeftSideBar.jsx</a>, <a href="Components_LeftSideBar_LeftSideBar.jsx.html#line14">line 14</a>
+        <a href="Components_LeftSideBar_LeftSideBar.jsx.html">Components/LeftSideBar/LeftSideBar.jsx</a>, <a href="Components_LeftSideBar_LeftSideBar.jsx.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -1054,6 +1242,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>The React component for the left sidebar.</li>
+</ul>
+</div>
+
 
 
 <dl>
@@ -1080,7 +1274,7 @@
     
 
     
-    <h4 class="name" id="RightSideBar"><span class="type-signature"></span>RightSideBar<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="RightSideBar"><span class="type-signature"></span>RightSideBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -1088,7 +1282,7 @@
 
 
 <div class="description">
-    <p>Component that displays side bar of which includes task progress</p>
+    <p>Displays the sidebar that includes the task progress, delete all task button, and user profile information.</p>
 </div>
 
 
@@ -1097,6 +1291,60 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An object containing the following properties:
+handleToggleTheme {Function} - A function to toggle the theme of the app.
+setTasks {Function} - A function to set the tasks in the app.
+checkedSwitch {Boolean} - A boolean value to indicate whether the dark mode is turned on or off.
+numberOfCompletedTasks {Number} - The number of completed tasks.
+allTasksLength {Number} - The total number of tasks.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1132,7 +1380,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_RightSideBar_RightSideBar.jsx.html">Components/RightSideBar/RightSideBar.jsx</a>, <a href="Components_RightSideBar_RightSideBar.jsx.html#line30">line 30</a>
+        <a href="Components_RightSideBar_RightSideBar.jsx.html">Components/RightSideBar/RightSideBar.jsx</a>, <a href="Components_RightSideBar_RightSideBar.jsx.html#line35">line 35</a>
     </li></ul></dd>
     
 
@@ -1160,6 +1408,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>The React component for the right sidebar.</li>
+</ul>
+</div>
+
 
 
 <dl>
@@ -1186,7 +1440,7 @@
     
 
     
-    <h4 class="name" id="SearchBar"><span class="type-signature"></span>SearchBar<span class="signature">()</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="SearchBar"><span class="type-signature"></span>SearchBar<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -1194,7 +1448,7 @@
 
 
 <div class="description">
-    <p>Component that allows user to search on a specific task</p>
+    <p>SearchBar component allows the user to search for a specific task by entering a search term.</p>
 </div>
 
 
@@ -1203,6 +1457,127 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>handleInputChange</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function that handles input change on the search bar.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>searchTerm</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The search term entered by the user.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1238,7 +1613,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_SearchBar_SearchBar.jsx.html">Components/SearchBar/SearchBar.jsx</a>, <a href="Components_SearchBar_SearchBar.jsx.html#line9">line 9</a>
+        <a href="Components_SearchBar_SearchBar.jsx.html">Components/SearchBar/SearchBar.jsx</a>, <a href="Components_SearchBar_SearchBar.jsx.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -1266,6 +1641,12 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <ul>
+<li>A React component that renders a search bar.</li>
+</ul>
+</div>
+
 
 
 <dl>
@@ -1292,7 +1673,261 @@
     
 
     
-    <h4 class="name" id="TaskModal"><span class="type-signature"></span>TaskModal<span class="signature">(showAddNewTask)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="ShowTasks"><span class="type-signature"></span>ShowTasks<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Renders a list of tasks based on the <code>filteredTasks</code> prop passed to it.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>filteredTasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The list of tasks to render.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setTasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to update the list of tasks.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>viewTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The function to display a single task.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Layouts_ShowTasks_ShowTasks.jsx.html">Layouts/ShowTasks/ShowTasks.jsx</a>, <a href="Layouts_ShowTasks_ShowTasks.jsx.html#line15">line 15</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A React component that displays a list of tasks.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TaskModal"><span class="type-signature"></span>TaskModal<span class="signature">(showAddNewTask, setShowAddNewTask, taskMode, titleTask, setTasks, tasks)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
     
 
     
@@ -1352,17 +1987,22 @@
 
             
 
-            <td class="description last"><p>value that contains on or off modal task</p></td>
+            <td class="description last"><p>A value that contains on or off modal task</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code></code></td>
+                <td class="name"><code>setShowAddNewTask</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
             
             </td>
 
@@ -1370,7 +2010,99 @@
 
             
 
-            <td class="description last"></td>
+            <td class="description last"><p>A function that sets value of on or off of task modal</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>taskMode</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A string that indicates whether it is Add or Edit mode</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>titleTask</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A string that contains the title of the task being edited</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setTasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A function that sets the state of the tasks</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tasks</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>An array that contains the list of tasks</p></td>
         </tr>
 
     
@@ -1411,7 +2143,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Components_TaskModal_TaskModal.jsx.html">Components/TaskModal/TaskModal.jsx</a>, <a href="Components_TaskModal_TaskModal.jsx.html#line57">line 57</a>
+        <a href="Components_TaskModal_TaskModal.jsx.html">Components/TaskModal/TaskModal.jsx</a>, <a href="Components_TaskModal_TaskModal.jsx.html#line60">line 60</a>
     </li></ul></dd>
     
 
@@ -1465,7 +2197,240 @@
     
 
     
-    <h4 class="name" id="useLocalStorage"><span class="type-signature"></span>useLocalStorage<span class="signature">(keyName, defaultValue)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    <h4 class="name" id="ToastModal"><span class="type-signature"></span>ToastModal<span class="signature">(props)</span><span class="type-signature"> &rarr; {React.Component}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A component that displays a toast message.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The component props.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>showToast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether to show the toast message.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>setShowToast</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>A function to set the <code>showToast</code> state.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Components_ToastModal_ToastModal.jsx.html">Components/ToastModal/ToastModal.jsx</a>, <a href="Components_ToastModal_ToastModal.jsx.html#line14">line 14</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <ul>
+<li>The rendered component.</li>
+</ul>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">React.Component</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="useLocalStorage"><span class="type-signature"></span>useLocalStorage<span class="signature">(keyName, defaultValue)</span><span class="type-signature"> &rarr; {Array}</span></h4>
     
 
     
@@ -1617,6 +2582,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    <p>An array containing the stored value and a function to set the value</p>
+</div>
+
 
 
 <dl>
@@ -1625,7 +2594,7 @@
     </dt>
     <dd>
         
-<span class="param-type">React.Component</span>
+<span class="param-type">Array</span>
 
 
     </dd>
@@ -1641,6 +2610,981 @@
     
 
     
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="darkTheme">darkTheme</h4>
+
+
+
+
+<div class="description">
+    <p>An object containing dark theme colors for a website.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the theme.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The background color of the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The colors of the text on the website.</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>primary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The primary color of the text on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hover</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the text on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>muted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The muted color of the text on the website.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>background</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The colors of the backgrounds in the website.</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>primary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The primary color of the background on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hover</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the background on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secondary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The secondary color of the background on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hoverBtnColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the button on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>viewBtnColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the view button.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iconHoverColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the icon on hover.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Theme_darkTheme.js.html">Theme/darkTheme.js</a>, <a href="Theme_darkTheme.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="lightTheme">lightTheme</h4>
+
+
+
+
+<div class="description">
+    <p>An object containing light theme colors for a website.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The ID of the theme.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The background color of the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>color</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The colors of the text on the website.</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>primary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The primary color of the text on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hover</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the text on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>muted</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The muted color of the text on the website.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>background</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The colors of the backgrounds in the website.</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>primary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The primary color of the background on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hover</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the background on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>secondary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The secondary color of the background on the website.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>hoverBtnColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the button on hover.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>viewBtnColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the view button.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iconHoverColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The color of the icon on hover.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>lineColor</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The colors of the lines on the website.</p>
+                <h6>Properties</h6>
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>primary</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The primary color of the lines on the website.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Theme_lightTheme.js.html">Theme/lightTheme.js</a>, <a href="Theme_lightTheme.js.html#line1">line 1</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
+    
 
     
 </article>
@@ -1653,13 +3597,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#ShowTasks">ShowTasks</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#ToastModal">ToastModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Mar 25 2023 02:21:53 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

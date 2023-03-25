@@ -35,33 +35,79 @@ import {
   Container,
   DateContainer,
   NotificationContainer,
+  NotificationIcon,
+  NotificationBadge,
 } from "./Header.styled";
 
 // import components
 import SearchBar from "Components/SearchBar/SearchBar";
 import TaskModal from "Components/TaskModal/TaskModal";
+import ToastModal from "Components/ToastModal/ToastModal";
+import formatDate from "Utils/formatDate";
 import { MdNotifications } from "react-icons/md";
 
+// Get the current date
 let currentDate = new Date().toLocaleDateString();
 
 /**
  * Layout that displays header of page which contains search-bar ,date and new task button
- * @returns {React.Layout}
+ * @param {Object} props - The component props
+ * @param {Function} props.setTasks - The function to update the list of tasks
+ * @param {Array} props.tasks - The list of tasks
+ * @param {Function} props.handleInputChange - The function to handle changes in the search bar
+ * @param {string} props.searchTerm - The current search term entered in the search bar
+ * @returns {React.Layout} The header component
  */
-const Header = ({ setTasks, tasks }) => {
+const Header = ({
+  setTasks,
+  tasks,
+  handleInputChange,
+  searchTerm,
+  storedTasks,
+}) => {
+  const getTodayAndUnCompletedTasks = () => {
+    return storedTasks.filter(
+      (task) =>
+        formatDate(task.date) === formatDate(new Date()) &amp;&amp;
+        task.completed === "uncompleted"
+    );
+  };
+
+  const todayTasks = getTodayAndUnCompletedTasks();
+  console.log("mangaa", todayTasks);
+
+  // State to control the visibility of the add new task modal
   const [showAddNewTask, setShowAddNewTask] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+  const [notificationCount, setNotificationCount] = useState(todayTasks.length);
+
+  /**
+   * Handles the click event for the new task button and shows the add new task modal
+   */
+  const handleNewTaskClick = () => {
+    setShowAddNewTask(true);
+  };
+
+  const handleShowToast = () => {
+    setShowToast(!showToast);
+  };
+
   return (
     &lt;Container>
-      &lt;SearchBar />
+      &lt;SearchBar
+        tasks={tasks}
+        handleInputChange={handleInputChange}
+        searchTerm={searchTerm}
+      />
       &lt;DateContainer>{currentDate}&lt;/DateContainer>
-      &lt;NotificationContainer>
-        &lt;MdNotifications size={32} />
-        &lt;TaskBtn
-          onClick={() => {
-            setShowAddNewTask(true);
-          }}
-          variant="primary"
-        >
+      &lt;NotificationContainer onClick={handleShowToast}>
+        &lt;NotificationIcon>
+          &lt;MdNotifications size={28} />
+          {notificationCount > 0 &amp;&amp; (
+            &lt;NotificationBadge>{notificationCount}&lt;/NotificationBadge>
+          )}
+        &lt;/NotificationIcon>
+        &lt;TaskBtn onClick={handleNewTaskClick} variant="primary">
           Add New Task
         &lt;/TaskBtn>{" "}
       &lt;/NotificationContainer>
@@ -71,6 +117,11 @@ const Header = ({ setTasks, tasks }) => {
         taskMode={"Add"}
         setTasks={setTasks}
         tasks={tasks}
+      />
+      &lt;ToastModal
+        showToast={showToast}
+        setShowToast={setShowToast}
+        TasksCount={todayTasks.length}
       />
     &lt;/Container>
   );
@@ -87,13 +138,13 @@ export default Header;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#darkTheme">darkTheme</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#lightTheme">lightTheme</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#CardTask">CardTask</a></li><li><a href="global.html#defaultTheme">defaultTheme</a></li><li><a href="global.html#DeleteTaskModal">DeleteTaskModal</a></li><li><a href="global.html#formatDate">formatDate</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#HomePage">HomePage</a></li><li><a href="global.html#LeftSideBar">LeftSideBar</a></li><li><a href="global.html#RightSideBar">RightSideBar</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#ShowTasks">ShowTasks</a></li><li><a href="global.html#TaskModal">TaskModal</a></li><li><a href="global.html#ToastModal">ToastModal</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Mar 01 2023 02:46:06 GMT+0200 (Eastern European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Mar 25 2023 02:21:53 GMT+0200 (Eastern European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>
