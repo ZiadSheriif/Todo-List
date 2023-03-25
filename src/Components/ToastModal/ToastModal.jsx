@@ -23,10 +23,12 @@ const ToastModal = ({ showToast, setShowToast, TasksCount }) => {
     <div>
       <ToastContainer show={showToast} onClose={handleCloseToast}>
         <Toast.Header>
-          <strong className="me-auto">Alerts</strong>
+          <strong className="me-auto text-info">Alerts</strong>
           <small>today</small>
         </Toast.Header>
-        <Toast.Body>You have {TasksCount} uncompleted tasks today</Toast.Body>
+        <Toast.Body>
+          You have <strong>{TasksCount} un-completed</strong> tasks today
+        </Toast.Body>
       </ToastContainer>
     </div>
   );
