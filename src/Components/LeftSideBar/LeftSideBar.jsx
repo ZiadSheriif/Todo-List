@@ -1,5 +1,5 @@
 // Imports
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import TaskModal from "Components/TaskModal/TaskModal";
 import { useLocation } from "react-router-dom";

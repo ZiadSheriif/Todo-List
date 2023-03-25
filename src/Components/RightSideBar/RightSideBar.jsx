@@ -5,7 +5,6 @@ import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 import userIcon from "Assets/images/user.jfif";
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
-// import { useNavigate, Link } from "react-router-dom";
 
 // import styles
 import {
