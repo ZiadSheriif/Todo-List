@@ -17,6 +17,7 @@
 
 - [📝 Table of Contents](#-table-of-contents)
 - [📙 About ](#-about-)
+- [Features](#features)
 - [Tree Structure](#tree-structure)
 - [🏁 Getting Started ](#-getting-started-)
   - [Prerequisite ](#prerequisite-)
@@ -32,12 +33,27 @@
 A to do List application that allows users to create and manage their tasks. It provides a simple and intuitive interface for users to add, edit, delete, and complete tasks.
 
 
+## Features
+1. Ability to add new tasks.
+2. Ability to view tasks based on different categories, **_such as_** 
+   - Today's Tasks
+   - All Tasks
+   - Important Tasks
+   -  Completed Tasks
+   -  Uncompleted Tasks
+3. Ability to mark tasks as **completed** or **uncompleted**.
+4. Ability to edit and delete tasks.
+5. Ability to search for tasks using a search bar.
+6. Responsive design that works well on desktop and mobile devices.
+7. Integration with local storage to persist data between sessions.
 
 📌 NOTE:
 
 > I am still working on the project, this is not the final verison of it, I just make it public to get feedback and imporve it
 
 ## Tree Structure
+
+```sh
 ├───Assets
 │   └───images
 ├───Components
@@ -56,6 +72,7 @@ A to do List application that allows users to create and manage their tasks. It 
 │   └───HomePage
 ├───Theme
 └───Utils
+```
 ## 🏁 Getting Started <a name = "get-started"></a>
 
 > This is an list of needed instructions to set up your project locally, to get a local copy up and running follow these
@@ -100,10 +117,10 @@ npm start
 ## Demo Outputs <a name = "outputs"></a>
 
 <div align="center">
-<h3 align='left'>Today's Tasks</h3>
-   <img src="screenshots/2.png">
 <h3 align='left'>All Tasks</h3>
    <img src="screenshots/1.png">
+<h3 align='left'>Today's Tasks</h3>
+   <img src="screenshots/2.png">
 
 <h3 align='left'>Important Tasks</h3>
 <img src="screenshots/3.png"></a>
