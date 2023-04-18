@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+<div align="center">
+<img  src="screenshots/6.png">
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
 
-## Available Scripts
+[![GitHub contributors](https://img.shields.io/github/contributors/ZiadSheriif/Todo-List)](https://github.com/ZiadSheriif/Todo-List/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/ZiadSheriif/Todo-List)](https://github.com/ZiadSheriif/Todo-List/issues)
+[![GitHub license](https://img.shields.io/github/license/ZiadSheriif/Todo-List)](https://github.com/ZiadSheriif/Todo-List/blob/master/LICENSE)
+[![GitHub forks](https://img.shields.io/github/forks/ZiadSheriif/Todo-List)](https://github.com/ZiadSheriif/Todo-List/network)
+[![GitHub stars](https://img.shields.io/github/stars/ZiadSheriif/Todo-List)](https://github.com/ZiadSheriif/Todo-List/stargazers)
+[![GitHub Language](https://img.shields.io/github/languages/top/ZiadSheriif/Todo-List)](https://img.shields.io/github/languages/count/ZiadSheriif/Todo-List)
 
-In the project directory, you can run:
+</div>
 
-### `npm start`
+## 📝 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [📝 Table of Contents](#-table-of-contents)
+- [📙 About ](#-about-)
+- [Tree Structure](#tree-structure)
+- [🏁 Getting Started ](#-getting-started-)
+  - [Prerequisite ](#prerequisite-)
+  - [Installation ](#installation-)
+  - [Running ](#running-)
+- [💻 Built Using ](#-built-using-)
+- [Demo Outputs ](#demo-outputs-)
+- [Contributors ](#contributors-)
+- [License ](#license-)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 📙 About <a name = "about"></a>
 
-### `npm test`
+A to do List application that allows users to create and manage their tasks. It provides a simple and intuitive interface for users to add, edit, delete, and complete tasks.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+📌 NOTE:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> I am still working on the project, this is not the final verison of it, I just make it public to get feedback and imporve it
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tree Structure
+├───Assets
+│   └───images
+├───Components
+│   ├───CardTask
+│   ├───DeleteTaskModal
+│   ├───LeftSideBar
+│   ├───RightSideBar
+│   ├───SearchBar
+│   ├───TaskModal
+│   └───ToastModal
+├───Hooks
+├───Layouts
+│   ├───Header
+│   └───ShowTasks
+├───Pages
+│   └───HomePage
+├───Theme
+└───Utils
+## 🏁 Getting Started <a name = "get-started"></a>
 
-### `npm run eject`
+> This is an list of needed instructions to set up your project locally, to get a local copy up and running follow these
+> instructuins.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisite <a name = "req"></a>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Node.js
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Installation <a name = "Install"></a>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **_Clone the repository_**
 
-## Learn More
+```sh
+$ git clone https://github.com/ZiadSheriif/Todo-List.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. **_Navigate to Phase2 Folder_**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```sh
+$ cd TodoList
+```
 
-### Code Splitting
+### Running <a name = "running"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**_Running program_**
 
-### Analyzing the Bundle Size
+1. **_Install modules_**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+npm install 
+```
+2. **_Start program_**
 
-### Making a Progressive Web App
+```sh
+npm start
+```
+## 💻 Built Using <a name = "tech"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **ReactJs**
 
-### Advanced Configuration
+## Demo Outputs <a name = "outputs"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<div align="center">
+<h3 align='left'>Today's Tasks</h3>
+   <img src="screenshots/2.png">
+<h3 align='left'>All Tasks</h3>
+   <img src="screenshots/1.png">
 
-### Deployment
+<h3 align='left'>Important Tasks</h3>
+<img src="screenshots/3.png"></a>
+<h3 align='left'>Completed Tasks</h3>
+<img src="screenshots/4.png"></a>
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Contributors <a name = "Contributors"></a>
 
-### `npm run build` fails to minify
+<table>
+  <tr>
+    <td align="center">
+    <a href="https://github.com/ZiadSheriif" target="_black">
+    <img src="https://avatars.githubusercontent.com/u/78238570?v=4" width="150px;" alt="Ziad Sherif"/>
+    <br />
+    <sub><b>Ziad Sherif</b></sub></a>
+    </td>
+    
+    
+  </tr>
+ </table>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License <a name = "license"></a>
+
+> This software is licensed under MIT License, See [License](https://github.com/ZiadSheriif/Todo-List/blob/main/LICENSE) for more information ©ZiadSheriif.
