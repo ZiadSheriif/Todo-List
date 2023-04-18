@@ -18,11 +18,6 @@ export const DateStyled = styled(DatePicker)`
 `;
 
 export const ModalContainer = styled(Modal)`
-  .modal-content {
-    max-width: 538px !important;
-    min-width: 410px !important;
-  }
-
   .modal-header {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;

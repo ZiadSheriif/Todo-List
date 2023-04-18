@@ -46,7 +46,6 @@ const Header = ({
   };
 
   const todayTasks = getTodayAndUnCompletedTasks();
-  console.log("mangaa", todayTasks);
 
   // State to control the visibility of the add new task modal
   const [showAddNewTask, setShowAddNewTask] = useState(false);

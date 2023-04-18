@@ -1,5 +1,5 @@
 // Imports
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "react-bootstrap/Card";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { RiDeleteBinLine } from "react-icons/ri";
@@ -52,6 +52,11 @@ const CardTask = ({ taskData, setTasks, tasks, viewTask }) => {
     localStorage.setItem("tasks", JSON.stringify(storedTasks));
     setStarTask(taskToEdit.important);
   };
+
+  useEffect(() => {
+    setState(taskData.completed);
+    setStarTask(taskData.important);
+  }, [taskData]);
 
   return (
     <CardContainer viewTask={viewTask}>
