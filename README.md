@@ -17,8 +17,8 @@
 
 - [📝 Table of Contents](#-table-of-contents)
 - [📙 About ](#-about-)
-- [🌠Features](#-features-)
-- [🎫Tree Structure](#tree-structure)
+- [🌠 Features ](#-features-)
+- [🎫 Tree Structure ](#-tree-structure-)
 - [🏁 Getting Started ](#-getting-started-)
   - [Prerequisite ](#prerequisite-)
   - [Installation ](#installation-)
@@ -26,7 +26,7 @@
 - [💻 Built Using ](#-built-using-)
 - [📸 Demo Screens ](#-demo-screens-)
 - [🕴 Contributors ](#-contributors-)
-- [📃License ](#-license-)
+- [📃 License ](#-license-)
 
 ## 📙 About <a name = "about"></a>
 
@@ -123,11 +123,18 @@ npm start
    <img src="screenshots/2.png">
 
 <h3 align='left'>Important Tasks</h3>
-<img src="screenshots/3.png"></a>
+<img src="screenshots/3.png">
 <h3 align='left'>Completed Tasks</h3>
-<img src="screenshots/4.png"></a>
+<img src="screenshots/4.png">
+<h3 align='left'>Add task</h3>
+<img src="screenshots/8.png">
+<h3 align='left'>Edit task</h3>
+<img src="screenshots/9.png">
+<h3 align='left'>Delete task</h3>
+<img src="screenshots/10.png">
+<h3 align='left'>Notifications</h3>
+<img src="screenshots/11.png">
 </div>
-
 ## 🕴 Contributors <a name = "Contributors"></a>
 
 <table>
