@@ -122,7 +122,7 @@ const TaskModal = ({
           description: description,
           date: date,
           important: important,
-          completed: "completed",
+          completed: completed ? "completed" : "uncompleted",
         },
       ]);
 
@@ -136,7 +136,7 @@ const TaskModal = ({
             description: description,
             date: date,
             important: important,
-            completed: "completed",
+            completed: completed ? "completed" : "uncompleted",
           },
         ])
       );
@@ -173,7 +173,7 @@ const TaskModal = ({
     setTitle("");
     setDescription("");
     setImportant(false);
-    setCompleted("uncompleted");
+    setCompleted(false);
   };
 
   // Use Effects
@@ -235,7 +235,6 @@ const TaskModal = ({
               id="state-one"
               onChange={(e) => setImportant(e.target.checked)}
               checked={important}
-              defaultChecked={false}
             />
             <TaskStatus>Mark as important</TaskStatus>
           </ProgressCheck>
@@ -246,7 +245,6 @@ const TaskModal = ({
               id="state-two"
               onChange={(e) => setCompleted(e.target.checked)}
               checked={completed}
-              defaultChecked={false}
             />
             <TaskStatus>Mark as completed</TaskStatus>
           </ProgressCheck>
