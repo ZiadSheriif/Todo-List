@@ -17,23 +17,23 @@
 
 - [📝 Table of Contents](#-table-of-contents)
 - [📙 About ](#-about-)
-- [Features](#features)
-- [Tree Structure](#tree-structure)
+- [🌠Features](#-features-)
+- [🎫Tree Structure](#tree-structure)
 - [🏁 Getting Started ](#-getting-started-)
   - [Prerequisite ](#prerequisite-)
   - [Installation ](#installation-)
   - [Running ](#running-)
 - [💻 Built Using ](#-built-using-)
-- [Demo Outputs ](#demo-outputs-)
-- [Contributors ](#contributors-)
-- [License ](#license-)
+- [📸 Demo Outputs ](#-demo-outputs-)
+- [🕴 Contributors ](#-contributors-)
+- [📃License ](#-license-)
 
 ## 📙 About <a name = "about"></a>
 
 A to do List application that allows users to create and manage their tasks. It provides a simple and intuitive interface for users to add, edit, delete, and complete tasks.
 
 
-## Features
+## 🌠 Features <a name= "features"></a>
 1. Ability to add new tasks.
 2. Ability to view tasks based on different categories, **_such as_** 
    - Today's Tasks
@@ -51,7 +51,7 @@ A to do List application that allows users to create and manage their tasks. It 
 
 > I am still working on the project, this is not the final verison of it, I just make it public to get feedback and imporve it
 
-## Tree Structure
+## 🎫 Tree Structure <a name= "tree-structure"></a>
 
 ```sh
 ├───Assets
@@ -114,7 +114,7 @@ npm start
 
 - **ReactJs**
 
-## Demo Outputs <a name = "outputs"></a>
+## 📸 Demo Outputs <a name = "outputs"></a>
 
 <div align="center">
 <h3 align='left'>All Tasks</h3>
@@ -128,7 +128,7 @@ npm start
 <img src="screenshots/4.png"></a>
 </div>
 
-## Contributors <a name = "Contributors"></a>
+## 🕴 Contributors <a name = "Contributors"></a>
 
 <table>
   <tr>
@@ -143,6 +143,6 @@ npm start
   </tr>
  </table>
 
-## License <a name = "license"></a>
+## 📃 License <a name = "license"></a>
 
 > This software is licensed under MIT License, See [License](https://github.com/ZiadSheriif/Todo-List/blob/main/LICENSE) for more information ©ZiadSheriif.
