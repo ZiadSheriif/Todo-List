@@ -135,6 +135,7 @@ npm start
 <h3 align='left'>Notifications</h3>
 <img src="screenshots/11.png">
 </div>
+
 ## 🕴 Contributors <a name = "Contributors"></a>
 
 <table>
