@@ -24,7 +24,7 @@
   - [Installation ](#installation-)
   - [Running ](#running-)
 - [💻 Built Using ](#-built-using-)
-- [📸 Demo Outputs ](#-demo-outputs-)
+- [📸 Demo Screens ](#-demo-screens-)
 - [🕴 Contributors ](#-contributors-)
 - [📃License ](#-license-)
 
@@ -114,7 +114,7 @@ npm start
 
 - **ReactJs**
 
-## 📸 Demo Outputs <a name = "outputs"></a>
+## 📸 Demo Screens <a name = "screens"></a>
 
 <div align="center">
 <h3 align='left'>All Tasks</h3>
