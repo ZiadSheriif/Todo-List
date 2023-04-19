@@ -113,6 +113,7 @@ npm start
 ## 💻 Built Using <a name = "tech"></a>
 
 - **ReactJs**
+- **React Bootstrap**
 
 ## 📸 Demo Screens <a name = "screens"></a>
 
