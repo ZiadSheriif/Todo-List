@@ -18,7 +18,7 @@
 - [📝 Table of Contents](#-table-of-contents)
 - [📙 About ](#-about-)
 - [🌠 Features ](#-features-)
-- [🎫 Tree Structure ](#-tree-structure-)
+- [📂 Folder Structure ](#-folder-structure-)
 - [🏁 Getting Started ](#-getting-started-)
   - [Prerequisite ](#prerequisite-)
   - [Installation ](#installation-)
@@ -51,7 +51,7 @@ A to do List application that allows users to create and manage their tasks. It 
 
 > I am still working on the project, this is not the final verison of it, I just make it public to get feedback and imporve it
 
-## 🎫 Tree Structure <a name= "tree-structure"></a>
+## 📂 Folder Structure <a name= "folder-structure"></a>
 
 ```sh
 ├───Assets
