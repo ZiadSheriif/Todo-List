@@ -26,6 +26,7 @@
 - [💻 Built Using ](#-built-using-)
 - [📸 Demo Screens ](#-demo-screens-)
 - [🕴 Contributors ](#-contributors-)
+- [⏳ Backlog](#-backlog)
 - [📃 License ](#-license-)
 
 ## 📙 About <a name = "about"></a>
@@ -134,6 +135,8 @@ npm start
 <img src="screenshots/10.png">
 <h3 align='left'>Notifications</h3>
 <img src="screenshots/11.png">
+<h3 align='left'>Responsitivity</h3>
+<img src="screenshots/12.png">
 </div>
 
 ## 🕴 Contributors <a name = "Contributors"></a>
@@ -150,6 +153,22 @@ npm start
     
   </tr>
  </table>
+
+ ## ⏳ Backlog
+ - [x] ~~Add a feature to categorize tasks, allowing users to filter tasks by category.~~
+ - [x] ~~Implement a due date feature that allows users to set a due date for tasks and receive reminders when tasks are approaching their deadline.~~
+ - [ ] Add the ability to sort tasks by various criteria, such as due date, priority, or category.
+ - [ ] Store tasks in a JSON file instead of local storage. 
+ - [x] ~~Implement a search functionality to enable users to search for specific tasks by keyword or phrase.~~
+ - [x] ~~Add the ability to prioritize tasks by assigning them different levels of importance or urgency.~~
+ - [ ] Implement a calendar view that shows tasks on a monthly or weekly calendar, making it easier for users to plan and manage their tasks.
+ - [ ] Add directory that user can attach task in a sub directory.
+ - [ ] Implement authentication and authorization features to allow users to create and manage their own tasks.
+ - [ ] Allow users to drag and drop tasks to rearrange their order or move them between categories.
+
+
+
+
 
 ## 📃 License <a name = "license"></a>
 
