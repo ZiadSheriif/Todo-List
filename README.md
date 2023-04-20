@@ -91,7 +91,7 @@ A to do List application that allows users to create and manage their tasks. It 
 $ git clone https://github.com/ZiadSheriif/Todo-List.git
 ```
 
-2. **_Navigate to Phase2 Folder_**
+2. **_Navigate to TodoList Folder_**
 
 ```sh
 $ cd TodoList
@@ -114,6 +114,7 @@ npm start
 ## 💻 Built Using <a name = "tech"></a>
 
 - **ReactJs**
+- **React Bootstrap**
 
 ## 📸 Demo Screens <a name = "screens"></a>
 
