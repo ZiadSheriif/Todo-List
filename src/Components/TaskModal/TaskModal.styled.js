@@ -159,3 +159,9 @@ export const DropdownContainer = styled(Dropdown)`
     }
   }
 `;
+
+export const AlertTitle = styled.p`
+  color: red;
+  font-weight: 300;
+  padding: 3px;
+`;

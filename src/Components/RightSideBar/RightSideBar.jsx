@@ -48,6 +48,10 @@ const RightSideBar = ({
 
   // This function is called to calculate the progress of the completed tasks.
   const calculateProgress = () => {
+    if (allTasksLength === 0) {
+      setCompletedTasks(0);
+      return;
+    }
     const decimaledNumber = (
       (numberOfCompletedTasks / allTasksLength) *
       100

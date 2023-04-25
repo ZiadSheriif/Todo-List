@@ -73,7 +73,7 @@ export const NotificationIcon = styled.span`
 export const NotificationBadge = styled.div`
   background-color: red;
   color: white;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   padding: 2px;
   border-radius: 50%;

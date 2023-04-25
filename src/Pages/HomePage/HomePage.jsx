@@ -37,7 +37,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const location = useLocation();
   const url = location.pathname;
-  const NavStateTasks = url.split("/")[1];
+  const navStateTasks = url.split("/")[1];
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -52,7 +52,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
 
   // Get the filtered tasks based on the current URL
   const getFilteredTasks = () => {
-    switch (NavStateTasks) {
+    switch (navStateTasks) {
       case "today-tasks":
         return storedTasks.filter(
           (task) => formatDate(task.date) === formatDate(new Date())
@@ -66,6 +66,21 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
       default:
         return storedTasks;
     }
+  };
+
+  const checkUrl = (url) => {
+    if (
+      !(
+        url === "today-tasks" ||
+        url === "important-tasks" ||
+        url === "today-tasks" ||
+        url === "uncompleted-tasks" ||
+        url === "all-tasks"
+      )
+    ) {
+      return "all-tasks";
+    }
+    return navStateTasks;
   };
 
   // Set the current tasks to be the active link
@@ -96,8 +111,8 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             storedTasks={storedTasks}
           />
           <CurrentItem>
-            {NavStateTasks} ({storedTasks && currentTasksInPageView.length}{" "}
-            tasks)
+            {checkUrl(navStateTasks)} (
+            {storedTasks && currentTasksInPageView.length} tasks)
           </CurrentItem>
           <ShapeView>
             <ChildView onClick={handleViewList}>
@@ -150,6 +165,16 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             />
             <Route
               path="uncompleted-tasks"
+              element={
+                <ShowTasks
+                  filteredTasks={filteredTasks}
+                  viewTask={viewTask}
+                  setTasks={setTasks}
+                />
+              }
+            />
+            <Route
+              path="Todo-List"
               element={
                 <ShowTasks
                   filteredTasks={filteredTasks}

@@ -13,6 +13,7 @@ import {
   TaskStatus,
   DateStyled,
   DropdownContainer,
+  AlertTitle,
 } from "./TaskModal.styled";
 
 const newTask = [
@@ -98,6 +99,7 @@ const TaskModal = ({
   const [completed, setCompleted] = useState(
     taskMode === "Edit" ? getTaskInfo(titleTask)?.completed : "uncompleted"
   );
+  const [titleIsUsed, setTitleIsUsed] = useState(false);
   // const [directory, setDirectory] = useState("Main");
 
   // functions that handle states
@@ -115,6 +117,7 @@ const TaskModal = ({
 
     if (found === undefined && title !== "") {
       // insert a new task in state to refresh automatically
+      setTitleIsUsed(false);
       setTasks([
         ...tasks,
         {
@@ -143,7 +146,7 @@ const TaskModal = ({
       clearAllData();
       // close modal window
       setShowAddNewTask(false);
-    }
+    } else setTitleIsUsed(true);
   };
 
   // Submit editing task
@@ -174,6 +177,7 @@ const TaskModal = ({
     setDescription("");
     setImportant(false);
     setCompleted(false);
+    setTitleIsUsed(false);
   };
 
   // Use Effects
@@ -203,6 +207,7 @@ const TaskModal = ({
               maxLength="100"
               required
             />
+            {titleIsUsed && <AlertTitle>Task's Name Used Before</AlertTitle>}
           </Form.Group>
           <Form.Group className="mb-3">
             <Label>Date</Label>

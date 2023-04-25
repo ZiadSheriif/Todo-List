@@ -73,7 +73,7 @@ const Header = ({
       <DateContainer>{currentDate}</DateContainer>
       <NotificationContainer onClick={handleShowToast}>
         <NotificationIcon>
-          <MdNotifications size={28} />
+          <MdNotifications size={32} />
           {notificationCount > 0 && (
             <NotificationBadge>{notificationCount}</NotificationBadge>
           )}

@@ -44,21 +44,24 @@ const LeftSideBar = ({ setTasks, tasks }) => {
           </TaskBtn>{" "}
         </Header>
         <Offcanvas.Body>
-          <NavBtn to="/today-tasks" exact>
-            Today's Tasks
-          </NavBtn>
-          <NavBtn to="/all-tasks" className={allTasks ? "" : "active"}>
+          <NavBtn to="today-tasks">Today's Tasks</NavBtn>
+          <NavBtn
+            exact
+            to="all-tasks"
+            className={
+              allTasks === "important-tasks" ||
+              allTasks === "completed-tasks" ||
+              allTasks === "uncompleted-tasks" ||
+              allTasks === "today-tasks"
+                ? ""
+                : "active"
+            }
+          >
             All Tasks
           </NavBtn>
-          <NavBtn to="/important-tasks" exact>
-            Important Tasks
-          </NavBtn>
-          <NavBtn to="/completed-tasks" exact>
-            Completed Tasks
-          </NavBtn>
-          <NavBtn to="/uncompleted-tasks" exact>
-            Unompleted Tasks
-          </NavBtn>
+          <NavBtn to="important-tasks">Important Tasks</NavBtn>
+          <NavBtn to="completed-tasks">Completed Tasks</NavBtn>
+          <NavBtn to="uncompleted-tasks">Unompleted Tasks</NavBtn>
         </Offcanvas.Body>
       </OffcanvasContainer>
       <TaskModal
