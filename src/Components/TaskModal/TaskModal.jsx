@@ -116,7 +116,7 @@ const TaskModal = ({
     const found = storedTasks.find((task) => task.title === title);
 
     if (found === undefined && title !== "") {
-      // insert a new task in state to refresh automatically
+      //? insert a new task in state to refresh automatically
       setTitleIsUsed(false);
       setTasks([
         ...tasks,
@@ -129,7 +129,7 @@ const TaskModal = ({
         },
       ]);
 
-      // insert new task
+      //? insert new task
       localStorage.setItem(
         "tasks",
         JSON.stringify([

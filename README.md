@@ -166,8 +166,8 @@ npm start
  - [ ] Add directory that user can attach task in a sub directory.
  - [ ] Implement authentication and authorization features to allow users to create and manage their own tasks.
  - [ ] Allow users to drag and drop tasks to rearrange their order or move them between categories.
- - [x] Ability to filter tasks by status (all, active, completed).
- - [x] Ability to edit task details. 
+ - [x] ~~Ability to filter tasks by status (all, active, completed).~~
+ - [x] ~~Ability to edit task details.~~ 
 
 
 
