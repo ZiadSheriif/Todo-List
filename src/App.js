@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 
 // Import themes
 import darkTheme from "Theme/darkTheme";
@@ -59,7 +59,7 @@ function App() {
   }, []);
   return (
     <ThemeProvider theme={JSON.parse(theme)}>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="" element={<Navigate to="/all-tasks" />} />
           <Route
@@ -72,7 +72,7 @@ function App() {
             }
           />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </ThemeProvider>
   );
 }

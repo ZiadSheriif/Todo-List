@@ -174,7 +174,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
               }
             />
             <Route
-              path="Todo-List"
+              path="/*"
               element={
                 <ShowTasks
                   filteredTasks={filteredTasks}

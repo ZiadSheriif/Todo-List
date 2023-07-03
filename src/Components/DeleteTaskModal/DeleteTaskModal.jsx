@@ -61,7 +61,12 @@ const DeleteTaskModal = ({
       keyboard={true}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Are you sure to delete {titleTask}?</Modal.Title>
+        {singleTask && (
+          <Modal.Title>Are you sure to delete {titleTask}?</Modal.Title>
+        )}
+        {!singleTask && (
+          <Modal.Title>Are you sure to delete all tasks ?</Modal.Title>
+        )}
       </Modal.Header>
       {singleTask && (
         <Modal.Body>This task will be deleted permanently.</Modal.Body>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import Toast from "react-bootstrap/Toast";
+import AuthContext from "Contexts/Toast-Context";
 
 import { ToastContainer } from "./ToastModal.styled";
 
@@ -11,17 +12,11 @@ import { ToastContainer } from "./ToastModal.styled";
  * @param {function} props.setShowToast - A function to set the `showToast` state.
  * @returns {React.Component} - The rendered component.
  */
-const ToastModal = ({ showToast, setShowToast, TasksCount }) => {
-  /**
-   * Closes the toast message.
-   */
-  const handleCloseToast = () => {
-    setShowToast(false);
-  };
-
+const ToastModal = ({ TasksCount }) => {
+  const ctx = useContext(AuthContext);
   return (
     <div>
-      <ToastContainer show={showToast} onClose={handleCloseToast}>
+      <ToastContainer show={ctx.isShown} onClose={ctx.closeToast}>
         <Toast.Header>
           <strong className="me-auto text-info">Alerts</strong>
           <small>today</small>

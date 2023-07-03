@@ -1,5 +1,6 @@
 // Imports
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AuthContext from "Contexts/Toast-Context";
 
 // import styles
 import {
@@ -37,6 +38,7 @@ const Header = ({
   searchTerm,
   storedTasks,
 }) => {
+  const ctx = useContext(AuthContext);
   const getTodayAndUnCompletedTasks = () => {
     return storedTasks.filter(
       (task) =>
@@ -49,7 +51,6 @@ const Header = ({
 
   // State to control the visibility of the add new task modal
   const [showAddNewTask, setShowAddNewTask] = useState(false);
-  const [showToast, setShowToast] = useState(false);
   const [notificationCount, setNotificationCount] = useState(todayTasks.length);
 
   /**
@@ -57,10 +58,6 @@ const Header = ({
    */
   const handleNewTaskClick = () => {
     setShowAddNewTask(true);
-  };
-
-  const handleShowToast = () => {
-    setShowToast(!showToast);
   };
 
   return (
@@ -71,7 +68,7 @@ const Header = ({
         searchTerm={searchTerm}
       />
       <DateContainer>{currentDate}</DateContainer>
-      <NotificationContainer onClick={handleShowToast}>
+      <NotificationContainer onClick={ctx.setShowToast}>
         <NotificationIcon>
           <MdNotifications size={32} />
           {notificationCount > 0 && (
@@ -89,11 +86,7 @@ const Header = ({
         setTasks={setTasks}
         tasks={tasks}
       />
-      <ToastModal
-        showToast={showToast}
-        setShowToast={setShowToast}
-        TasksCount={todayTasks.length}
-      />
+      <ToastModal TasksCount={todayTasks.length} />
     </Container>
   );
 };
