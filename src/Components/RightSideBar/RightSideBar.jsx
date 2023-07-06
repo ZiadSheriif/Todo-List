@@ -102,7 +102,7 @@ const RightSideBar = ({
       </Header>
       <hr />
       <Offcanvas.Body>
-        <Dropdown.Item href="today-tasks">No tasks today </Dropdown.Item>
+        <Dropdown.Item href="#/today-tasks">No tasks today </Dropdown.Item>
       </Offcanvas.Body>
       <Footer>
         <DeleteBtn onClick={handleDeleteAllTasks}>Delete all task</DeleteBtn>
