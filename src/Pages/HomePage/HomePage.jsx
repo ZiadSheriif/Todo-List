@@ -1,9 +1,9 @@
-// Imports
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { FiList } from "react-icons/fi";
 import { CiGrid41 } from "react-icons/ci";
+import { Form } from 'react-bootstrap';
 
 // Import styles
 import {
@@ -35,6 +35,7 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
   const [viewTask, setViewTask] = useState(true);
   const storedTasks = JSON.parse(localStorage.getItem("tasks"));
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortCriteria, setSortCriteria] = useState("dueDate"); // New state for sorting criteria
   const location = useLocation();
   const url = location.pathname;
   const navStateTasks = url.split("/")[1];
@@ -50,22 +51,52 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
     setViewTask(true);
   };
 
+  const handleSortChange = (event) => {
+    console.log(event.target.value)
+    setSortCriteria(event.target.value);
+  };
+
+  // Sorting function
+  const sortTasks = (tasks) => {
+    switch (sortCriteria) {
+      case "dueDate":
+        return tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+      case "priority":
+        return tasks.sort((a, b) => b.important - a.important);
+      default:
+        return tasks;
+    }
+  };
+
   // Get the filtered tasks based on the current URL
   const getFilteredTasks = () => {
+    let filteredTasks = storedTasks;
+
     switch (navStateTasks) {
       case "today-tasks":
-        return storedTasks.filter(
+        filteredTasks = storedTasks.filter(
           (task) => formatDate(task.date) === formatDate(new Date())
         );
+        break;
       case "important-tasks":
-        return storedTasks.filter((task) => task.important);
+        filteredTasks = storedTasks.filter((task) => task.important);
+        break;
       case "completed-tasks":
-        return storedTasks.filter((task) => task.completed === "completed");
+        filteredTasks = storedTasks.filter(
+          (task) => task.completed === "completed"
+        );
+        break;
       case "uncompleted-tasks":
-        return storedTasks.filter((task) => task.completed === "uncompleted");
+        filteredTasks = storedTasks.filter(
+          (task) => task.completed === "uncompleted"
+        );
+        break;
       default:
-        return storedTasks;
+        break;
     }
+
+    // Apply sorting
+    return sortTasks(filteredTasks);
   };
 
   const checkUrl = (url) => {
@@ -114,6 +145,13 @@ const HomePage = ({ handleToggleTheme, checkedSwitch }) => {
             {checkUrl(navStateTasks)} (
             {storedTasks && currentTasksInPageView.length} tasks)
           </CurrentItem>
+          <div>
+            <Form.Label htmlFor="sort">Sort by:</Form.Label>
+            <Form.Select id="sort" value={sortCriteria} onChange={handleSortChange}>
+              <option value="dueDate">Due Date</option>
+              <option value="priority">Priority</option>
+            </Form.Select>
+          </div>
           <ShapeView>
             <ChildView onClick={handleViewList}>
               <FiList size={25} />
