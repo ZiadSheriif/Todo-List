@@ -48,8 +48,8 @@ A to do List application that allows users to create and manage their tasks. It 
 6. Responsive design that works well on desktop and mobile devices.
 7. Integration with local storage to persist data between sessions.
 
-📌 NOTE:
 
+> [!NOTE]
 > I am still working on the project, this is not the final verison of it, I just make it public to get feedback and imporve it
 
 ## 📂 Folder Structure <a name= "folder-structure"></a>
@@ -158,7 +158,7 @@ npm start
  ## ⏳ Backlog
  - [x] ~~Add a feature to categorize tasks, allowing users to filter tasks by category.~~
  - [x] ~~Implement a due date feature that allows users to set a due date for tasks and receive reminders when tasks are approaching their deadline.~~
- - [ ] Add the ability to sort tasks by various criteria, such as due date, priority, or category.
+ - [x] ~~Add the ability to sort tasks by various criteria, such as due date, priority, or category.~~
  - [ ] Store tasks in a JSON file instead of local storage. 
  - [x] ~~Implement a search functionality to enable users to search for specific tasks by keyword or phrase.~~
  - [x] ~~Add the ability to prioritize tasks by assigning them different levels of importance or urgency.~~
