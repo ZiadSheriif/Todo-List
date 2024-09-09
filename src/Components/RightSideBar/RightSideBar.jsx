@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
-import userIcon from "Assets/images/user.jfif";
+// import userIcon from "Assets/images/user.jfif";
 import DeleteTaskModal from "Components/DeleteTaskModal/DeleteTaskModal";
 
 // import styles
@@ -11,7 +11,7 @@ import {
   OffcanvasContainer,
   Header,
   ProfileBtn,
-  IcoContainer,
+  // IcoContainer,
   Footer,
   DeleteBtn,
   FormSwitcher,
@@ -47,25 +47,26 @@ const RightSideBar = ({
   };
 
   // This function is called to calculate the progress of the completed tasks.
-  const calculateProgress = () => {
-    if (allTasksLength === 0) {
-      setCompletedTasks(0);
-      return;
-    }
-    const decimaledNumber = (
-      (numberOfCompletedTasks / allTasksLength) *
-      100
-    ).toFixed(2);
-    const result = decimaledNumber.includes(".")
-      ? parseFloat(decimaledNumber)
-      : parseInt(decimaledNumber);
-    setCompletedTasks(result);
-  };
+
 
   // The progress is calculated whenever the completed tasks state changes.
   useEffect(() => {
+    const calculateProgress = () => {
+      if (allTasksLength === 0) {
+        setCompletedTasks(0);
+        return;
+      }
+      const decimaledNumber = (
+        (numberOfCompletedTasks / allTasksLength) *
+        100
+      ).toFixed(2);
+      const result = decimaledNumber.includes(".")
+        ? parseFloat(decimaledNumber)
+        : parseInt(decimaledNumber);
+      setCompletedTasks(result);
+    };
     calculateProgress();
-  }, [completedTasks]);
+  }, [completedTasks, allTasksLength, numberOfCompletedTasks]);
 
   return (
     <OffcanvasContainer
@@ -76,11 +77,16 @@ const RightSideBar = ({
       scroll={true}
     >
       <Header>
-        <Offcanvas.Title>
+        {/* <Offcanvas.Title>
           Hi, User{" "}
           <IcoContainer>
             <img src={userIcon} alt="user-ico" />
           </IcoContainer>
+        </Offcanvas.Title> 
+          We don't have an authentication system now, so there is no need to that.
+        */}
+        <Offcanvas.Title>
+          Sidebar
         </Offcanvas.Title>
         <ButtonContainer onClick={handleToggleTheme}>
           <span>Darkmode</span>
@@ -107,7 +113,7 @@ const RightSideBar = ({
       <Footer>
         <DeleteBtn onClick={handleDeleteAllTasks}>Delete all task</DeleteBtn>
         <ProfileBtn>
-          <a href="https://github.com/ZiadSheriif">Projected by Ziad Sherif</a>
+          <a href="https://github.com/ZiadSheriif/Todo-List">Open-Source on GitHub!</a>
         </ProfileBtn>{" "}
         <DeleteTaskModal
           deleteTask={deleteTask}

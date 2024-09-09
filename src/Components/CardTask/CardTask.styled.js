@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 
 export const CardContainer = styled(Card)`
   background-color: ${({ theme }) => theme.canvas};
-  cursor: pointer;
   width: ${({ viewTask }) => (viewTask === true ? "18rem" : "100%")};
   position: relative;
 
@@ -89,4 +88,5 @@ export const DateContainer = styled.div`
   position: absolute;
   left: 0;
   right: 0;
+  color: white;
 `;
